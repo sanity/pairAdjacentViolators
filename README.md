@@ -16,7 +16,7 @@ Note this algorithm is also known as "Pool Adjacent Violators".
 
 ## Limitations
 
-* Very little documentation, however your IDE should be able to assist for now
+* Very little documentation, however your IDE should be able to assist for now, and you can always read the source!
 
 ## Usage
 
