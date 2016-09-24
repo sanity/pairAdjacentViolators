@@ -14,6 +14,10 @@ Note this algorithm is also known as "Pool Adjacent Violators".
 * Fairly efficient implementation without compromizing code readability
 * Supports reverse-interpolation
 
+## Limitations
+
+* Very little documentation, however your IDE should be able to assist for now
+
 ## Usage
 
 ### Adding library dependency
