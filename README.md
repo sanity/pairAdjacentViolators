@@ -14,6 +14,14 @@ You can use this library by adding a dependency for Gradle, Maven, SBT, Leininge
 
 [![](https://jitpack.io/v/trystacks/pairAdjacentViolators.svg)](https://jitpack.io/#trystacks/pairAdjacentViolators)
 
-### Java usage
+### Kotlin usage
 
-TODO: Finish
+```kotlin
+import com.trystacks.pav.PairAdjacentViolators
+import com.trystacks.pav.PairAdjacentViolators.*
+// ...
+val inputPoints = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
+val pav = PairAdjacentViolators(inputPoints)
+val interpolator = pav.interpolator()
+println("Interpolated: ${interpolator(6.0)}")
+```
