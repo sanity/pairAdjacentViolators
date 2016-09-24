@@ -18,9 +18,16 @@ class ChainSpec : StringSpec() {
             var position = 0
             val mc = origList.toMutableChain()
             mc.iterate {
-                it.nextValue shouldEqual origList.get(position++)
+                it.nextValue shouldEqual origList.get(position)
+                if (it.previousValue != null) {
+                    it.previousValue shouldEqual origList.get(position-1)
+                } else {
+                    position shouldEqual 0
+                }
+                position++
                 null
             }
+            position shouldEqual origList.size
         }
 
         "toMutableChain should support replacing of prev and next" {
