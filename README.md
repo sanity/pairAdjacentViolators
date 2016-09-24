@@ -2,9 +2,9 @@
 
 ## Overview
 
-An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/janspubs/2009/reports/deleeuw_hornik_mair_R_09.pdf) algorithm for [isotonic regression](https://en.wikipedia.org/wiki/Isotonic_regression).  Written in Kotlin, but usable from any language that can use Java libraries (including Java itself, of course).
+An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/janspubs/2009/reports/deleeuw_hornik_mair_R_09.pdf) algorithm for [isotonic regression](https://en.wikipedia.org/wiki/Isotonic_regression).  Written in Kotlin, but usable from any language that can use Java libraries (including Java itself, of course).  Note this algorithm is also known as "Pool Adjacent Violators".
 
-Note this algorithm is also known as "Pool Adjacent Violators".
+While not widely known, I've found this algorithm useful in a variety of circumstances, particularly when it comes to calibration.  One if it's nice features is that it is non-parametric, no window sizes to guess etc.
 
 ## Features
 
@@ -38,4 +38,4 @@ val interpolator = pav.interpolator()
 println("Interpolated: ${interpolator(6.0)}")
 ```
 ### License
-Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Stacks](http://trystacks.com/).
+Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Ian Clarke](http://blog.locut.us/) of [Stacks](http://trystacks.com/).
