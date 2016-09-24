@@ -45,7 +45,7 @@ class PAVSpec : FreeSpec() {
             PairAdjacentViolators(decreasingPoints, DECREASING).get() shouldEqual decreasingPoints
         }
 
-        "Spline should interpolator as expected" {
+        "Spline should interpolate as expected" {
             val increasingPoints = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
             val pav = PairAdjacentViolators(increasingPoints)
             pav.get() shouldEqual increasingPoints
@@ -57,6 +57,23 @@ class PAVSpec : FreeSpec() {
                 if (lastPoint != null) {
                     val midPointValue = splineInterpolator((point.x + lastPoint.x) / 2.0)
                     midPointValue should { it >= lastPoint.y && it <= point.y }
+                }
+                lastPointVar = point
+            }
+        }
+
+        "Spline should inverse interpolate as expected" {
+            val increasingPoints = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
+            val pav = PairAdjacentViolators(increasingPoints)
+            pav.get() shouldEqual increasingPoints
+            val splineInterpolator = pav.inverseInterpolator(PairAdjacentViolators.InterpolationStrategy.SPLINE)
+            var lastPointVar: Point? = null
+            for (point in increasingPoints) {
+                splineInterpolator(point.y) shouldEqual point.x
+                val lastPoint = lastPointVar
+                if (lastPoint != null) {
+                    val midPointValue = splineInterpolator((point.y + lastPoint.y) / 2.0)
+                    midPointValue should { it >= lastPoint.x && it <= point.x }
                 }
                 lastPointVar = point
             }
