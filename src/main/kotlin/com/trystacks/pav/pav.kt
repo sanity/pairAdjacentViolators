@@ -55,6 +55,15 @@ class PairAdjacentViolators(originalPoints: Iterable<Point>, mode: PAVMode = PAV
         }
     }
 
+    fun inverseInterpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
+        when (strategy) {
+            SPLINE -> return {
+                val spline = Spline.createMonotoneCubicSpline(isotonicPoints.map { it.y }.toDoubleArray(), isotonicPoints.map { it.x }.toDoubleArray())
+                spline.interpolate(it)
+            }
+        }
+    }
+
     enum class InterpolationStrategy {
         SPLINE
     }
