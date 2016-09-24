@@ -13,7 +13,7 @@ class ChainSpec : StringSpec() {
             mc.toList() shouldEqual origList
         }
 
-        "iterate() should return each element once" {
+        "iterate() should return each element once, and in the correct order" {
             val origList = arrayListOf(1, 2, 3, 4)
             var position = 0
             val mc = origList.toMutableChain()
