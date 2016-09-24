@@ -9,7 +9,7 @@ Note this algorithm is also known as "Pool Adjacent Violators".
 ## Features
 
 * Tries to do one thing and do it well with minimal bloat, no external dependencies (other than Kotlin's stdlib)
-* Fairly comprehensive unit tests (using [Kotlintest](https://github.com/kotlintest/kotlintest))
+* Fairly comprehensive [unit tests](https://github.com/trystacks/pairAdjacentViolators/tree/master/src/test/kotlin/com/trystacks/pav) (using [Kotlintest](https://github.com/kotlintest/kotlintest))
 * Employs an isotonic spline algorithm for smooth interpolation
 * Fairly efficient implementation without compromizing code readability
 * Supports reverse-interpolation
