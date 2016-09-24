@@ -26,4 +26,4 @@ val interpolator = pav.interpolator()
 println("Interpolated: ${interpolator(6.0)}")
 ```
 ### License
-Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3.
+Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Stacks](http://trystacks.com/).
