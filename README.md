@@ -6,6 +6,14 @@ An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/jan
 
 Note this algorithm is also known as "Pool Adjacent Violators".
 
+## Features
+
+* Tries to do one thing and do it well with minimal bloat, no external dependencies (other than Kotlin's stdlib)
+* Fairly comprehensive unit tests (using [Kotlintest](https://github.com/kotlintest/kotlintest))
+* Employs an isotonic spline algorithm for smooth interpolation
+* Fairly efficient implementation without compromizing code readability
+* Supports reverse-interpolation
+
 ## Usage
 
 ### Adding library dependency
@@ -14,7 +22,7 @@ You can use this library by adding a dependency for Gradle, Maven, SBT, Leininge
 
 [![](https://jitpack.io/v/trystacks/pairAdjacentViolators.svg)](https://jitpack.io/#trystacks/pairAdjacentViolators)
 
-### Kotlin usage
+### Basic usage
 
 ```kotlin
 import com.trystacks.pav.PairAdjacentViolators
