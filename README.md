@@ -2,7 +2,7 @@
 
 ## Overview
 
-An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/janspubs/2009/reports/deleeuw_hornik_mair_R_09.pdf) algorithm for [isotonic regression](https://en.wikipedia.org/wiki/Isotonic_regression).  Written in Kotlin, but usable from any language that can use Java libraries (including Java itself, of course).  Note this algorithm is also known as "Pool Adjacent Violators".
+An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/janspubs/2009/reports/deleeuw_hornik_mair_R_09.pdf) algorithm for [isotonic regression](https://en.wikipedia.org/wiki/Isotonic_regression).  Written in [Kotlin](http://kotlinlang.org/) (an exciting new programming language that you should know about if you don't already).  Note this algorithm is also known as "Pool Adjacent Violators".
 
 While not widely known, I've found this algorithm useful in a variety of circumstances, particularly when it comes to [calibration of predictive model outputs](http://scikit-learn.org/stable/modules/calibration.html).
 
@@ -12,11 +12,12 @@ While not widely known, I've found this algorithm useful in a variety of circums
 * Fairly comprehensive [unit tests](https://github.com/trystacks/pairAdjacentViolators/tree/master/src/test/kotlin/com/trystacks/pav) (using [Kotlintest](https://github.com/kotlintest/kotlintest))
 * Employs an isotonic spline algorithm for smooth interpolation
 * Fairly efficient implementation without compromizing code readability
+* While implemented in Kotlin, should be usable from Java, Clojure, Scala, and other JVM languages
 * Supports reverse-interpolation
 
 ## Limitations
 
-* Very little documentation, however your IDE should be able to assist for now, and you can always read the source!
+* Very little documentation for the moment, however your IDE should be able to assist for now, and you can always read the source!
 
 ## Usage
 
