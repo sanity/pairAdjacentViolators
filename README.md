@@ -29,7 +29,7 @@ A picture is worth a thousand words:
 
 You can use this library by adding a dependency for Gradle, Maven, SBT, Leiningen or another Maven-compatible dependency management system thanks to Jitpack:
 
-[![](https://jitpack.io/v/trystacks/pairAdjacentViolators.svg)](https://jitpack.io/#trystacks/pairAdjacentViolators)
+[![](https://jitpack.io/v/sanity/pairAdjacentViolators.svg)](https://jitpack.io/#sanity/pairAdjacentViolators)
 
 ### Basic usage
 
