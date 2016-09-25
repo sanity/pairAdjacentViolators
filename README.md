@@ -2,7 +2,7 @@
 
 ## Overview
 
-An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/janspubs/2009/reports/deleeuw_hornik_mair_R_09.pdf) algorithm for [isotonic regression](https://en.wikipedia.org/wiki/Isotonic_regression).  Written in Kotlin, but usable from any language that can use Java libraries (including Java itself, of course).  Note this algorithm is also known as "Pool Adjacent Violators".
+An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/janspubs/2009/reports/deleeuw_hornik_mair_R_09.pdf) algorithm for [isotonic regression](https://en.wikipedia.org/wiki/Isotonic_regression).  Written in [Kotlin](http://kotlinlang.org/) (an exciting new programming language on the JVM), but usable from any language that can use Java libraries (including Java itself, of course).  Note this algorithm is also known as "Pool Adjacent Violators".
 
 While not widely known, I've found this algorithm useful in a variety of circumstances, particularly when it comes to [calibration of predictive model outputs](http://scikit-learn.org/stable/modules/calibration.html).
 
