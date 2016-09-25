@@ -72,6 +72,33 @@ class ChainSpec : FreeSpec() {
                     mc.toList() shouldEqual arrayListOf(100, 3, 4)
                     mc.checkChainIntegrity() shouldBe(true)
                 }
+
+                "should work on the second and last value" {
+                    val origList = arrayListOf(1, 2, 3, 4)
+                    val mc = origList.toMutableChain()
+                    mc.iterate {
+                        when {
+                            it.previousValue == 3 && it.nextValue == 4 -> 100
+                            else -> null
+                        }
+                    }
+                    mc.toList() shouldEqual arrayListOf(1, 2, 100)
+                    mc.checkChainIntegrity() shouldBe(true)
+                }
+
+                "should work on two overlapping values" {
+                    val origList = arrayListOf(1, 2, 3, 4)
+                    val mc = origList.toMutableChain()
+                    mc.iterate {
+                        when {
+                            it.previousValue == 3 && it.nextValue == 4 -> 100
+                            it.previousValue == 2 && it.nextValue == 100 -> 200
+                            else -> null
+                        }
+                    }
+                    mc.toList() shouldEqual arrayListOf(1, 200)
+                    mc.checkChainIntegrity() shouldBe(true)
+                }
             }
         }
     }
