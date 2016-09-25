@@ -2,7 +2,7 @@
 
 ## Overview
 
-![Illustration of PAV in action](https://trystacks.github.io/pairAdjacentViolators/pav-example.png)
+![Illustration of PAV in action](https://trystacks.github.io/pairAdjacentViolators/pav-example.png) 
 
 An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/janspubs/2009/reports/deleeuw_hornik_mair_R_09.pdf) algorithm for [isotonic regression](https://en.wikipedia.org/wiki/Isotonic_regression).  Written in [Kotlin](http://kotlinlang.org/) (an exciting new programming language that you should know about if you don't already).  Note this algorithm is also known as "Pool Adjacent Violators".
 
