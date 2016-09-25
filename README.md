@@ -17,7 +17,7 @@ While not widely known, I've found this algorithm useful in a variety of circums
 
 ## Limitations
 
-* Very little documentation, however your IDE should be able to assist for now, and you can always read the source!
+* Very little documentation for the moment, however your IDE should be able to assist for now, and you can always read the source!
 
 ## Usage
 
