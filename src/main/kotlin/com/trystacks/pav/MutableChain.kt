@@ -70,6 +70,18 @@ internal data class MutableChain<V>(var value: V, var previous: MutableChain<V>?
         return arrayList
     }
 
+    internal fun checkChainIntegrity() : Boolean {
+        var mc: MutableChain<V>? = this
+        while (mc != null) {
+            val previous = mc.previous
+            if (previous != null && previous.next != mc) {
+                return false
+            }
+            mc = mc.next
+        }
+        return true
+    }
+
     override fun toString() = "MC[$value]"
 }
 
