@@ -12,8 +12,8 @@ import java.util.*
 fun main(args: Array<String>) {
     val rand = Random()
     val points = ArrayList<Point>()
-    for (x in 0 .. 1000) {
-        points.add(Point(x.toDouble(), funX(x.toDouble()) + ((rand.nextDouble()-0.5) * 50000.0)))
+    for (x in 0 .. 100) {
+        points.add(Point(x.toDouble(), funX(x.toDouble()) + ((rand.nextDouble()-0.5) * 5000.0)))
     }
     val startTime = System.nanoTime()
     val pav = PairAdjacentViolators(points)
