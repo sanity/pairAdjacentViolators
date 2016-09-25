@@ -8,7 +8,7 @@ While not widely known, I've found this algorithm useful in a variety of circums
 
 A picture is worth a thousand words:
 
-![Illustration of PAV in action](https://trystacks.github.io/pairAdjacentViolators/pav-example.png) 
+![PAV in action](https://trystacks.github.io/pairAdjacentViolators/pav-example.png) 
 
 ## Features
 
