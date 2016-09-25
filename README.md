@@ -6,6 +6,8 @@ An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/jan
 
 While not widely known, I've found this algorithm useful in a variety of circumstances, particularly when it comes to [calibration of predictive model outputs](http://scikit-learn.org/stable/modules/calibration.html).
 
+A picture is worth a thousand words:
+
 ![Illustration of PAV in action](https://trystacks.github.io/pairAdjacentViolators/pav-example.png) 
 
 ## Features
