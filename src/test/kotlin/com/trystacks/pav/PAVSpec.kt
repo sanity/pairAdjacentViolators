@@ -45,6 +45,12 @@ class PAVSpec : FreeSpec() {
             PairAdjacentViolators(decreasingPoints, DECREASING).get() shouldEqual decreasingPoints
         }
 
+        "PAV should 'backtrack' to merge previous points where necessary" {
+            val points = listOf(Point(1.0, 5.0), Point(2.0, 6.0), Point(3.0, 1.0))
+            PairAdjacentViolators(points).get() shouldEqual listOf(Point(2.0, (5.0+6.0+1.0)/3.0, 3.0))
+
+        }
+
         "Spline should interpolate as expected" {
             val increasingPoints = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
             val pav = PairAdjacentViolators(increasingPoints)

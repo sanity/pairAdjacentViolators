@@ -54,5 +54,17 @@ class ChainSpec : StringSpec() {
                 }
             }
         }
+
+        "Replacement should work on the first and second value" {
+            val origList = arrayListOf(1, 2, 3, 4)
+            val mc = origList.toMutableChain()
+            mc.iterate {
+                when {
+                    it.previousValue == 1 && it.nextValue == 2 -> 100
+                    else -> null
+                }
+            }
+            mc.toList() shouldEqual arrayListOf(100, 3, 4)
+        }
     }
 }

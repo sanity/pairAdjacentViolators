@@ -17,6 +17,8 @@ class PairAdjacentViolators(originalPoints: Iterable<Point>, mode: PAVMode = PAV
             val ny = ((y * weight) + (other.y * other.weight)) / combinedWeight
             return Point(nx, ny, combinedWeight)
         }
+
+        override fun toString() = "($x, $y${if (weight != 1.0) " :$weight" else ""})"
     }
 
     override fun get(): List<Point> = isotonicPoints
@@ -39,6 +41,7 @@ class PairAdjacentViolators(originalPoints: Iterable<Point>, mode: PAVMode = PAV
                     null
                 }
             } else {
+                println()
                 null
             }
         }
