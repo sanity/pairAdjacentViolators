@@ -113,7 +113,7 @@ class Spline private constructor(private val mX: DoubleArray, private val mY: Do
                         throw IllegalArgumentException("The control points must have " + "monotonic Y values.")
                     }
                     val h = Math.hypot(a.toDouble(), b.toDouble()).toFloat()
-                    if (h > 9.0) {
+                    if (h > 3.0) {
                         val t = 3.0 / h
                         m[i] = t * a * d[i]
                         m[i + 1] = t * b * d[i]
