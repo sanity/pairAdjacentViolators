@@ -8,7 +8,7 @@ While not widely known, I've found this algorithm useful in a variety of circums
 
 A picture is worth a thousand words:
 
-![PAV in action](https://sanity.github.io/pairAdjacentViolators/pav-example.png) 
+![PAV in action](https://sanity.github.io/pairAdjacentViolators/pav-example.png)
 
 ## Features
 
@@ -46,4 +46,4 @@ println("Interpolated: ${interpolator(6.0)}")
 Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Ian Clarke](http://blog.locut.us/) of [Stacks](http://trystacks.com/).
 
 ### Development
-[![Build Status](https://travis-ci.org/sanity/pairAdjacentViolators.svg?branch=master)](https://travis-ci.org/sanity/pairAdjacentViolators) [![Coverage Status](https://coveralls.io/repos/github/sanity/pairAdjacentViolators/badge.svg?branch=master)](https://coveralls.io/github/sanity/pairAdjacentViolators?branch=master)
+[![Build Status](https://travis-ci.org/sanity/pairAdjacentViolators.svg?branch=master)](https://travis-ci.org/sanity/pairAdjacentViolators)
