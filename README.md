@@ -46,4 +46,4 @@ println("Interpolated: ${interpolator(6.0)}")
 Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Ian Clarke](http://blog.locut.us/) of [Stacks](http://trystacks.com/).
 
 ### Development
-[![Build Status](https://travis-ci.org/sanity/pairAdjacentViolators.svg?branch=master)](https://travis-ci.org/sanity/pairAdjacentViolators)
+[![Build Status](https://travis-ci.org/sanity/pairAdjacentViolators.svg?branch=master)](https://travis-ci.org/sanity/pairAdjacentViolators) [![Coverage Status](https://coveralls.io/repos/github/sanity/pairAdjacentViolators/badge.svg?branch=master)](https://coveralls.io/github/sanity/pairAdjacentViolators?branch=master)
