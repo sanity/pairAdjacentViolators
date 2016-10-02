@@ -1,14 +1,13 @@
 package com.trystacks.pav
 
 import com.trystacks.pav.PairAdjacentViolators.InterpolationStrategy.SPLINE
-import java.util.function.Supplier
 
 /**
  * Created by ian on 9/5/16.
  */
 
 
-class PairAdjacentViolators(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) : Supplier<List<PairAdjacentViolators.Point>> {
+class PairAdjacentViolators(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) {
 
     data class Point(val x: Double, val y: Double, val weight: Double = 1.0) {
         fun merge(other: Point): Point {
@@ -21,9 +20,7 @@ class PairAdjacentViolators(originalPoints: Iterable<Point>, mode: PAVMode = PAV
         override fun toString() = "($x, $y${if (weight != 1.0) " :$weight" else ""})"
     }
 
-    override fun get(): List<Point> = isotonicPoints
-
-    private val isotonicPoints: List<Point>
+    val isotonicPoints: List<Point>
 
     init {
         val points: MutableChain<Point> = originalPoints.sortedBy { it.x }.toMutableChain()
