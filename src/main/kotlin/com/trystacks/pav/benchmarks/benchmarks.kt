@@ -2,7 +2,6 @@ package com.trystacks.pav.benchmarks
 
 import com.trystacks.pav.PairAdjacentViolators
 import com.trystacks.pav.PairAdjacentViolators.Point
-import java.time.Duration
 import java.util.*
 
 /**
@@ -19,7 +18,7 @@ fun main(args: Array<String>) {
     val pav = PairAdjacentViolators(points)
     val interpolator = pav.interpolator()
     val mergedPoints = pav.isotonicPoints
-    println("Took ${Duration.ofNanos(System.nanoTime()-startTime)} to build PAV for ${points.size} input points resulting in ${mergedPoints.size} merged points")
+    println("Took ${System.nanoTime()-startTime}ns to build PAV for ${points.size} input points resulting in ${mergedPoints.size} merged points")
     for (p in points) {
         println("${p.x}\t${p.y}\t${interpolator(p.x)}")
     }
