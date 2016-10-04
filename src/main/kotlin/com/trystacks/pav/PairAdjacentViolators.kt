@@ -56,7 +56,7 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
     @JvmOverloads fun interpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
         when (strategy) {
             SPLINE -> return {
-                val spline = Spline.createMonotoneCubicSpline(isotonicPoints.map { it.x }.toDoubleArray(), isotonicPoints.map { it.y }.toDoubleArray())
+                val spline = MonotoneSpline(isotonicPoints.map { it.x }.toDoubleArray(), isotonicPoints.map { it.y }.toDoubleArray())
                 spline.interpolate(it)
             }
         }
@@ -65,7 +65,7 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
     @JvmOverloads fun inverseInterpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
         when (strategy) {
             SPLINE -> return {
-                val spline = Spline.createMonotoneCubicSpline(isotonicPoints.map { it.y }.toDoubleArray(), isotonicPoints.map { it.x }.toDoubleArray())
+                val spline = MonotoneSpline(isotonicPoints.map { it.y }.toDoubleArray(), isotonicPoints.map { it.x }.toDoubleArray())
                 spline.interpolate(it)
             }
         }
