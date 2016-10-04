@@ -1,7 +1,10 @@
 package com.trystacks.pav
 /**
  * Performs spline interpolation given a set of control points.
- * @hide
+ *
+ * This implementation converted from java from https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/util/Spline.java
+ *
+ * Includes a fix for the following bug: https://code.google.com/p/android/issues/detail?id=222470
  */
 class Spline private constructor(private val mX: DoubleArray, private val mY: DoubleArray, private val mM: DoubleArray) {
     /**
