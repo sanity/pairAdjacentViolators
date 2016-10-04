@@ -1,11 +1,11 @@
-package com.trystacks.pav.benchmarks
+package com.trystacks.pav.examples
 
 import com.trystacks.pav.PairAdjacentViolators
 import com.trystacks.pav.PairAdjacentViolators.Point
 import java.util.*
 
 /**
- * Created by ian on 9/25/16.
+ * Generate the example graph used in README.md
  */
 
 fun main(args: Array<String>) {
