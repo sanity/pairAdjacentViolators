@@ -8,11 +8,11 @@ import java.util.*
  * pairs of elements in the list.
  */
 
-internal fun <V> List<V>.toMutableChain(): MutableChain<V> {
+internal fun <V> List<V>.toPairSubstitutingDoublyLinkedList(): PairSubstitutingDoublyLinkedList<V> {
     if (this.isEmpty()) {
-        throw IllegalArgumentException("Cannot create MutableChain with empty list")
+        throw IllegalArgumentException("Cannot create PairSubstitutingDoublyLinkedList with empty list")
     } else {
-        val mcArray = this.map { MutableChain(it) }.toTypedArray()
+        val mcArray = this.map { PairSubstitutingDoublyLinkedList(it) }.toTypedArray()
         for (i in mcArray.indices) {
             if (i > 0) {
                 mcArray[i - 1].next = mcArray[i]
@@ -35,8 +35,8 @@ internal fun <V> List<V>.toMutableChain(): MutableChain<V> {
       |
  */
 
-internal data class MutableChain<V>(var value: V, var previous: MutableChain<V>? = null, var next: MutableChain<V>? = null) {
-    class Cursor<V>(private val after: MutableChain<V>) {
+internal data class PairSubstitutingDoublyLinkedList<V>(var value: V, var previous: PairSubstitutingDoublyLinkedList<V>? = null, var next: PairSubstitutingDoublyLinkedList<V>? = null) {
+    class Cursor<V>(private val after: PairSubstitutingDoublyLinkedList<V>) {
         val previousValue: V?
             get() = after.previous?.value
         val nextValue: V
@@ -51,7 +51,7 @@ internal data class MutableChain<V>(var value: V, var previous: MutableChain<V>?
      * and the cursor will be repositioned before the new replacement element.
      */
     fun iterate(handler: (Cursor<V>) -> V?) {
-        var afterCursor: MutableChain<V>? = this
+        var afterCursor: PairSubstitutingDoublyLinkedList<V>? = this
         while (afterCursor != null) {
             val cursor = Cursor<V>(afterCursor)
             val replacementValue = handler(cursor)
@@ -71,7 +71,7 @@ internal data class MutableChain<V>(var value: V, var previous: MutableChain<V>?
     }
 
     /**
-     * Transform the MutableChain into a List
+     * Transform the PairSubstitutingDoublyLinkedList into a List
      */
     fun toList(): List<V> {
         val arrayList = ArrayList<V>()
@@ -86,8 +86,8 @@ internal data class MutableChain<V>(var value: V, var previous: MutableChain<V>?
      * Check that the bi-directonal links are consistent, this is used for testing purposes
      * and should never return anything but *true*
      */
-    internal fun checkChainIntegrity() : Boolean {
-        var mc: MutableChain<V>? = this
+    internal fun checkListIntegrity() : Boolean {
+        var mc: PairSubstitutingDoublyLinkedList<V>? = this
         while (mc != null) {
             val previous = mc.previous
             if (previous != null && previous.next != mc) {

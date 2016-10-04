@@ -7,11 +7,11 @@ import io.kotlintest.specs.FreeSpec
  */
 class ChainSpec : FreeSpec() {
     init {
-        "MutableChain" - {
-            "toMutableChain" - {
+        "PairSubstitutingDoublyLinkedList" - {
+            "toPairSubstitutingDoublyLinkedList" - {
                 "should return the original unmodified list" {
                     val origList = arrayListOf(1, 2, 3)
-                    val mc = origList.toMutableChain()
+                    val mc = origList.toPairSubstitutingDoublyLinkedList()
                     mc.toList() shouldEqual origList
                 }
             }
@@ -19,7 +19,7 @@ class ChainSpec : FreeSpec() {
             "iterate() should return each element once, and in the correct order" {
                 val origList = arrayListOf(1, 2, 3, 4)
                 var position = 0
-                val mc = origList.toMutableChain()
+                val mc = origList.toPairSubstitutingDoublyLinkedList()
                 mc.iterate {
                     it.nextValue shouldEqual origList.get(position)
                     if (it.previousValue != null) {
@@ -36,7 +36,7 @@ class ChainSpec : FreeSpec() {
             "Replacement" - {
                 "should work correctly in the middle of the list" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toMutableChain()
+                    val mc = origList.toPairSubstitutingDoublyLinkedList()
                     mc.iterate {
                         when {
                             it.previousValue == 2 && it.nextValue == 3 -> 100
@@ -44,12 +44,12 @@ class ChainSpec : FreeSpec() {
                         }
                     }
                     mc.toList() shouldEqual arrayListOf(1, 100, 4)
-                    mc.checkChainIntegrity() shouldBe(true)
+                    mc.checkListIntegrity() shouldBe(true)
                 }
 
                 "should fail on the first value" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toMutableChain()
+                    val mc = origList.toPairSubstitutingDoublyLinkedList()
                     shouldThrow<IllegalArgumentException> {
                         mc.iterate {
                             when {
@@ -62,7 +62,7 @@ class ChainSpec : FreeSpec() {
 
                 "should work on the first and second value" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toMutableChain()
+                    val mc = origList.toPairSubstitutingDoublyLinkedList()
                     mc.iterate {
                         when {
                             it.previousValue == 1 && it.nextValue == 2 -> 100
@@ -70,12 +70,12 @@ class ChainSpec : FreeSpec() {
                         }
                     }
                     mc.toList() shouldEqual arrayListOf(100, 3, 4)
-                    mc.checkChainIntegrity() shouldBe(true)
+                    mc.checkListIntegrity() shouldBe(true)
                 }
 
                 "should work on the second and last value" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toMutableChain()
+                    val mc = origList.toPairSubstitutingDoublyLinkedList()
                     mc.iterate {
                         when {
                             it.previousValue == 3 && it.nextValue == 4 -> 100
@@ -83,12 +83,12 @@ class ChainSpec : FreeSpec() {
                         }
                     }
                     mc.toList() shouldEqual arrayListOf(1, 2, 100)
-                    mc.checkChainIntegrity() shouldBe(true)
+                    mc.checkListIntegrity() shouldBe(true)
                 }
 
                 "should work on two overlapping values" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toMutableChain()
+                    val mc = origList.toPairSubstitutingDoublyLinkedList()
                     mc.iterate {
                         when {
                             it.previousValue == 3 && it.nextValue == 4 -> 100
@@ -97,7 +97,7 @@ class ChainSpec : FreeSpec() {
                         }
                     }
                     mc.toList() shouldEqual arrayListOf(1, 200)
-                    mc.checkChainIntegrity() shouldBe(true)
+                    mc.checkListIntegrity() shouldBe(true)
                 }
             }
         }

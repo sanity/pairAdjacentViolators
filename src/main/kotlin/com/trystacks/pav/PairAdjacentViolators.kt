@@ -30,7 +30,7 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
     val isotonicPoints: List<Point>
 
     init {
-        val points: MutableChain<Point> = originalPoints.sortedBy { it.x }.toMutableChain()
+        val points: PairSubstitutingDoublyLinkedList<Point> = originalPoints.sortedBy { it.x }.toPairSubstitutingDoublyLinkedList()
         points.iterate { cursor ->
             val previous = cursor.previousValue
             val next = cursor.nextValue
