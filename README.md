@@ -18,7 +18,7 @@ A picture is worth a thousand words:
 * Fairly comprehensive [unit tests](https://github.com/trystacks/pairAdjacentViolators/tree/master/src/test/kotlin/com/trystacks/pav) (using [Kotlintest](https://github.com/kotlintest/kotlintest))
 * Employs an isotonic spline algorithm for smooth interpolation
 * Fairly efficient implementation without compromizing code readability
-* While implemented in Kotlin, should be usable from Java, Clojure, Scala, and other JVM languages
+* While implemented in Kotlin, works nicely from Java and other JVM languages
 * Supports reverse-interpolation
 
 ## Limitations
