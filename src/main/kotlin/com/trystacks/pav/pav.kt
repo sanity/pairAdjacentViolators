@@ -7,9 +7,9 @@ import com.trystacks.pav.PairAdjacentViolators.InterpolationStrategy.SPLINE
  */
 
 
-class PairAdjacentViolators(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) {
+class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) {
 
-    data class Point(val x: Double, val y: Double, val weight: Double = 1.0) {
+    data class Point @JvmOverloads constructor(val x: Double, val y: Double, val weight: Double = 1.0) {
         fun merge(other: Point): Point {
             val combinedWeight = weight + other.weight
             val nx = ((x * weight) + (other.x * other.weight)) / combinedWeight
@@ -46,7 +46,7 @@ class PairAdjacentViolators(originalPoints: Iterable<Point>, mode: PAVMode = PAV
         isotonicPoints = points.toList()
     }
 
-    fun interpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
+    @JvmOverloads fun interpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
         when (strategy) {
             SPLINE -> return {
                 val spline = Spline.createMonotoneCubicSpline(isotonicPoints.map { it.x }.toDoubleArray(), isotonicPoints.map { it.y }.toDoubleArray())
@@ -55,7 +55,7 @@ class PairAdjacentViolators(originalPoints: Iterable<Point>, mode: PAVMode = PAV
         }
     }
 
-    fun inverseInterpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
+    @JvmOverloads fun inverseInterpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
         when (strategy) {
             SPLINE -> return {
                 val spline = Spline.createMonotoneCubicSpline(isotonicPoints.map { it.y }.toDoubleArray(), isotonicPoints.map { it.x }.toDoubleArray())
