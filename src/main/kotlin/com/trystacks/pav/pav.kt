@@ -3,12 +3,15 @@ package com.trystacks.pav
 import com.trystacks.pav.PairAdjacentViolators.InterpolationStrategy.SPLINE
 
 /**
- * Created by ian on 9/5/16.
+ * Implements the "pair adjacent violators" algorithm, also known as "pool adjacent violators", for isotonic regression.
  */
 
 
 class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) {
 
+    /**
+     * A point in 2D space, with an optional weight (defaults to 1).
+     */
     data class Point @JvmOverloads constructor(val x: Double, val y: Double, val weight: Double = 1.0) {
         fun merge(other: Point): Point {
             val combinedWeight = weight + other.weight
@@ -20,6 +23,10 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
         override fun toString() = "($x, $y${if (weight != 1.0) " :$weight" else ""})"
     }
 
+    /**
+     * The points after the regression, should either be increasing or decreasing depending
+     * on how the PairAdjacentViolators object is configured.
+     */
     val isotonicPoints: List<Point>
 
     init {
