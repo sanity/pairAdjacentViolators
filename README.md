@@ -55,12 +55,12 @@ import java.util.*;
 public class PAVTest {
     public static void main(String[] args) {
         List<Point> points = new LinkedList<>();
-        points.add(new Point(0.0, 0.0, 1.0));
-        points.add(new Point(1.0, 1.0, 1.0));
-        points.add(new Point(2.0, 3.0, 1.0));
-        points.add(new Point(3.0, 5.0, 1.0));
-        PairAdjacentViolators pav = new PairAdjacentViolators(points, PAVMode.INCREASING);
-        final Function1<Double, Double> interpolator = pav.interpolator(InterpolationStrategy.SPLINE);
+        points.add(new Point(0.0, 0.0));
+        points.add(new Point(1.0, 1.0));
+        points.add(new Point(2.0, 3.0));
+        points.add(new Point(3.0, 5.0));
+        PairAdjacentViolators pav = new PairAdjacentViolators(points);
+        final Function1<Double, Double> interpolator = pav.interpolator();
         for (double x=0; x<3; x+=0.1) {
             System.out.println(x+"\t"+interpolator.invoke(x));
         }
