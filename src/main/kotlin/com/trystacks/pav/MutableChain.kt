@@ -3,7 +3,9 @@ package com.trystacks.pav
 import java.util.*
 
 /**
- * Created by ian on 9/24/16.
+ * A doubly-linked-list with functionality that is particularly useful for implementing the
+ * pool-adjacent violators algorithm.  Specifically, supports iterating through the list while replacing
+ * pairs of elements in the list.
  */
 
 internal fun <V> List<V>.toMutableChain(): MutableChain<V> {
@@ -41,6 +43,13 @@ internal data class MutableChain<V>(var value: V, var previous: MutableChain<V>?
             get() = after.value
     }
 
+    /**
+     * Iterate through the list.  The cursor is positioned between two elements unless at the first element.  The
+     * cursor can be used to retrieve the element before or after the cursor.
+     *
+     * The handler may optionally return a value, if it does this value will replace the elements before and after the cursor,
+     * and the cursor will be repositioned before the new replacement element.
+     */
     fun iterate(handler: (Cursor<V>) -> V?) {
         var afterCursor: MutableChain<V>? = this
         while (afterCursor != null) {
@@ -61,6 +70,9 @@ internal data class MutableChain<V>(var value: V, var previous: MutableChain<V>?
         }
     }
 
+    /**
+     * Transform the MutableChain into a List
+     */
     fun toList(): List<V> {
         val arrayList = ArrayList<V>()
         iterate {
@@ -70,6 +82,10 @@ internal data class MutableChain<V>(var value: V, var previous: MutableChain<V>?
         return arrayList
     }
 
+    /**
+     * Check that the bi-directonal links are consistent, this is used for testing purposes
+     * and should never return anything but *true*
+     */
     internal fun checkChainIntegrity() : Boolean {
         var mc: MutableChain<V>? = this
         while (mc != null) {
