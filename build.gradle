@@ -42,7 +42,11 @@ task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
 
 task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
     archiveName = 'javadoc.jar'
+    classifier = 'javadoc'
     from javadoc.destinationDir
 }
 
 install.dependsOn javadocJar
+artifacts {
+    archives file: file('build/libs/javadoc.jar'), classifier: 'javadoc'
+}
