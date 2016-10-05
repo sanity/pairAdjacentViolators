@@ -35,7 +35,7 @@ dependencies {
 }
 
 task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
-    outputFormat = 'javadoc'
+    outputFormat = 'html'
     outputDirectory = javadoc.destinationDir
     inputs.dir 'src/main/kotlin'
 }
@@ -46,7 +46,8 @@ task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
     from javadoc.destinationDir
 }
 
-install.dependsOn javadocJar
+//install.dependsOn javadocJar
 artifacts {
-    archives file: file('build/libs/javadoc.jar'), classifier: 'javadoc'
+    //archives file: file('build/libs/javadoc.jar'), classifier: 'javadoc'
+    archives javadocJar
 }
