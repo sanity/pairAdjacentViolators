@@ -5,7 +5,7 @@ import io.kotlintest.specs.FreeSpec
 /**
  * Created by ian on 9/24/16.
  */
-class ChainSpec : FreeSpec() {
+class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
     init {
         "PairSubstitutingDoublyLinkedList" - {
             "toPairSubstitutingDoublyLinkedList" - {
