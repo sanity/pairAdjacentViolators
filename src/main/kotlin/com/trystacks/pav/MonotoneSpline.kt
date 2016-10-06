@@ -14,11 +14,11 @@ class MonotoneSpline(private val controlXPoints: DoubleArray, private val contro
         if (controlXPoints.size != controlYPoints.size || controlXPoints.size < 2) {
             throw IllegalArgumentException("There must be at least two control points and the arrays must be of equal length.")
         }
-        val n = controlXPoints.size
-        val d = DoubleArray(n - 1) // could optimize this out
-        tangents = DoubleArray(n)
+        val pointsCount = controlXPoints.size
+        val d = DoubleArray(pointsCount - 1) // could optimize this out
+        tangents = DoubleArray(pointsCount)
         // Compute slopes of secant lines between successive points.
-        for (i in 0..n - 1 - 1) {
+        for (i in 0..pointsCount - 1 - 1) {
             val h = controlXPoints[i + 1] - controlXPoints[i]
             if (h <= 0f) {
                 throw IllegalArgumentException("The control points must all have strictly increasing X values.")
@@ -27,12 +27,12 @@ class MonotoneSpline(private val controlXPoints: DoubleArray, private val contro
         }
         // Initialize the tangents as the average of the secants.
         tangents[0] = d[0]
-        for (i in 1..n - 1 - 1) {
+        for (i in 1..pointsCount - 1 - 1) {
             tangents[i] = (d[i - 1] + d[i]) * 0.5f
         }
-        tangents[n - 1] = d[n - 2]
+        tangents[pointsCount - 1] = d[pointsCount - 2]
         // Update the tangents to preserve monotonicity.
-        for (i in 0..n - 1 - 1) {
+        for (i in 0..pointsCount - 1 - 1) {
             if (d[i] == 0.0) {
                 // successive Y values are equal
                 tangents[i] = 0.0
