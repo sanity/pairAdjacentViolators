@@ -21,10 +21,6 @@ A picture is worth a thousand words:
 * While implemented in Kotlin, works nicely from Java and other JVM languages
 * Supports reverse-interpolation
 
-## Limitations
-
-* Very little documentation for the moment, however your IDE should be able to assist for now, and you can always read the source!
-
 ## Usage
 
 ### Adding library dependency
