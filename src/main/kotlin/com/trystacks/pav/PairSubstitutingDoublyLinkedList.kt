@@ -41,6 +41,17 @@ class PairSubstitutingDoublyLinkedList<V>(var value: V, var previous: PairSubsti
             val cursor = Cursor<V>(afterCursor)
             val replacementValue = handler(cursor)
             if (replacementValue != null) {
+                /*
+                 Before replacement:
+                        p   n
+                    A   B   C   D
+                          |
+
+                 After replacement:
+                    p   n
+                    A   X   D
+                      |
+                */
                 val C = afterCursor
                 val B = afterCursor.previous
                 val D = C.next
