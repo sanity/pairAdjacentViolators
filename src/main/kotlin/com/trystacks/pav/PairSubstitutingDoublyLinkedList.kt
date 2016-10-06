@@ -8,21 +8,6 @@ import java.util.*
  * pairs of elements in the list.
  */
 
-internal fun <V> List<V>.toPairSubstitutingDoublyLinkedList(): PairSubstitutingDoublyLinkedList<V> {
-    if (this.isEmpty()) {
-        throw IllegalArgumentException("Cannot create PairSubstitutingDoublyLinkedList with empty list")
-    } else {
-        val mcArray = this.map { PairSubstitutingDoublyLinkedList(it) }.toTypedArray()
-        for (i in mcArray.indices) {
-            if (i > 0) {
-                mcArray[i - 1].next = mcArray[i]
-                mcArray[i].previous = mcArray[i - 1]
-            }
-        }
-        return mcArray[0]
-    }
-}
-
 /*
  Before replacement:
         p   n
@@ -35,7 +20,7 @@ internal fun <V> List<V>.toPairSubstitutingDoublyLinkedList(): PairSubstitutingD
       |
  */
 
-internal data class PairSubstitutingDoublyLinkedList<V>(var value: V, var previous: PairSubstitutingDoublyLinkedList<V>? = null, var next: PairSubstitutingDoublyLinkedList<V>? = null) {
+class PairSubstitutingDoublyLinkedList<V>(var value: V, var previous: PairSubstitutingDoublyLinkedList<V>? = null, var next: PairSubstitutingDoublyLinkedList<V>? = null) {
     class Cursor<V>(private val after: PairSubstitutingDoublyLinkedList<V>) {
         val previousValue: V?
             get() = after.previous?.value
@@ -101,5 +86,17 @@ internal data class PairSubstitutingDoublyLinkedList<V>(var value: V, var previo
     override fun toString() = "MC[$value]"
 }
 
-
-
+internal fun <V> List<V>.toPairSubstitutingDoublyLinkedList(): PairSubstitutingDoublyLinkedList<V> {
+    if (this.isEmpty()) {
+        throw IllegalArgumentException("Cannot create PairSubstitutingDoublyLinkedList with empty list")
+    } else {
+        val mcArray = this.map { PairSubstitutingDoublyLinkedList(it) }.toTypedArray()
+        for (i in mcArray.indices) {
+            if (i > 0) {
+                mcArray[i - 1].next = mcArray[i]
+                mcArray[i].previous = mcArray[i - 1]
+            }
+        }
+        return mcArray[0]
+    }
+}
