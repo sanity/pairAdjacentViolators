@@ -1,4 +1,4 @@
-package com.trystacks.pav
+package com.github.sanity.pav
 /**
  * Performs spline interpolation given a set of control points.
  *

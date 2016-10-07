@@ -1,7 +1,7 @@
-package com.trystacks.pav.examples
+package com.github.sanity.pav.examples
 
-import com.trystacks.pav.PairAdjacentViolators
-import com.trystacks.pav.PairAdjacentViolators.Point
+import com.github.sanity.pav.PairAdjacentViolators
+import com.github.sanity.pav.PairAdjacentViolators.Point
 import java.util.*
 
 /**

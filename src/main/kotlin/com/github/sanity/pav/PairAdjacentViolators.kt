@@ -1,6 +1,6 @@
-package com.trystacks.pav
+package com.github.sanity.pav
 
-import com.trystacks.pav.PairAdjacentViolators.InterpolationStrategy.SPLINE
+import com.github.sanity.pav.PairAdjacentViolators.InterpolationStrategy.SPLINE
 
 /**
  * Implements the "pair adjacent violators" algorithm, also known as "pool adjacent violators", for isotonic regression.

@@ -1,4 +1,4 @@
-package com.trystacks.pav
+package com.github.sanity.pav
 
 import java.util.*
 

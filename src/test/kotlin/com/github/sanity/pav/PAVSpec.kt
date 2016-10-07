@@ -1,7 +1,7 @@
-package com.trystacks.pav
+package com.github.sanity.pav
 
-import com.trystacks.pav.PairAdjacentViolators.PAVMode.DECREASING
-import com.trystacks.pav.PairAdjacentViolators.Point
+import com.github.sanity.pav.PairAdjacentViolators.PAVMode.DECREASING
+import com.github.sanity.pav.PairAdjacentViolators.Point
 import io.kotlintest.specs.FreeSpec
 
 /**

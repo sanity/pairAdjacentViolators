@@ -32,8 +32,8 @@ You can use this library by adding a dependency for Gradle, Maven, SBT, Leininge
 ### Basic usage from Kotlin
 
 ```kotlin
-import com.trystacks.pav.PairAdjacentViolators
-import com.trystacks.pav.PairAdjacentViolators.*
+import com.github.sanity.pav.PairAdjacentViolators
+import com.github.sanity.pav.PairAdjacentViolators.*
 // ...
 val inputPoints = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
 val pav = PairAdjacentViolators(inputPoints)
@@ -43,8 +43,8 @@ println("Interpolated: ${interpolator(6.0)}")
 
 ### Basic usage from Java
 ```java
-import com.trystacks.pav.*;
-import com.trystacks.pav.PairAdjacentViolators.*;
+import com.github.sanity.pav.*;
+import com.github.sanity.pav.PairAdjacentViolators.*;
 import kotlin.jvm.functions.*;
 import java.util.*;
 
@@ -65,8 +65,8 @@ public class PAVTest {
 ```
 
 ### Full API documentation
-* [0.1.7](https://jitpack.io/com/github/sanity/pairAdjacentViolators/0.1.7/javadoc/com.trystacks.pav/index.html)
-* [SNAPSHOT](https://jitpack.io/com/github/sanity/pairAdjacentViolators/-SNAPSHOT/javadoc/com.trystacks.pav/index.html) (warning: This may take a while to load as it is rebuilt on-demand)
+* [0.1.8](https://jitpack.io/com/github/sanity/pairAdjacentViolators/0.1.8/javadoc/com.github.sanity.pav/index.html)
+* [SNAPSHOT](https://jitpack.io/com/github/sanity/pairAdjacentViolators/-SNAPSHOT/javadoc/com.github.sanity.pav/index.html) (warning: This may take a while to load as it is rebuilt on-demand)
 
 ### License
 Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Ian Clarke](http://blog.locut.us/) of [Stacks](http://trystacks.com/).
