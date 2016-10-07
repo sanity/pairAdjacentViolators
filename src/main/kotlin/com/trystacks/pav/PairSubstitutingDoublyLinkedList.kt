@@ -54,8 +54,8 @@ class PairSubstitutingDoublyLinkedList<V>(var value: V, var previous: PairSubsti
                 */
                 val C = afterCursor
                 val B = afterCursor.previous
-                val D = C.next
                 if (B == null) throw IllegalArgumentException("Cannot replace values at start of chain")
+                val D = C.next
                 B.value = replacementValue; val X = B;
                 X.next = D; if (D != null) D.previous = X
                 afterCursor = X

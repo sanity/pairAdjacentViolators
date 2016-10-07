@@ -45,7 +45,6 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
                     null
                 }
             } else {
-                println()
                 null
             }
         }
