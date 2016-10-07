@@ -15,7 +15,7 @@ A picture is worth a thousand words:
 ## Features
 
 * Tries to do one thing and do it well with minimal bloat, no external dependencies (other than Kotlin's stdlib)
-* Fairly comprehensive [unit tests](https://github.com/trystacks/pairAdjacentViolators/tree/master/src/test/kotlin/com/trystacks/pav) (using [Kotlintest](https://github.com/kotlintest/kotlintest))
+* Fairly comprehensive [unit tests](https://github.com/trystacks/pairAdjacentViolators/tree/master/src/test/kotlin/com/github/sanity/pav) (using [Kotlintest](https://github.com/kotlintest/kotlintest))
 * Employs an isotonic spline algorithm for smooth interpolation
 * Fairly efficient implementation without compromizing code readability
 * While implemented in Kotlin, works nicely from Java and other JVM languages
