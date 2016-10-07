@@ -1,5 +1,5 @@
 group 'com.trystacks'
-version '0.1.5'
+version '0.1.7'
 
 buildscript {
     ext.kotlin_version = '1.0.4'
