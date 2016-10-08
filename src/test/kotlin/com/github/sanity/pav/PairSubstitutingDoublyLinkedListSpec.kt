@@ -1,5 +1,6 @@
 package com.github.sanity.pav
 
+import com.github.sanity.pav.PairSubstitutingDoublyLinkedList.Companion.createFromList
 import io.kotlintest.specs.FreeSpec
 
 /**
@@ -11,7 +12,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
             "toPairSubstitutingDoublyLinkedList" - {
                 "should return the original unmodified list" {
                     val origList = arrayListOf(1, 2, 3)
-                    val mc = origList.toPairSubstitutingDoublyLinkedList()
+                    val mc = createFromList(origList)
                     mc.toList() shouldEqual origList
                 }
             }
@@ -19,7 +20,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
             "iterate() should return each element once, and in the correct order" {
                 val origList = arrayListOf(1, 2, 3, 4)
                 var position = 0
-                val mc = origList.toPairSubstitutingDoublyLinkedList()
+                val mc = createFromList(origList)
                 mc.iterate {
                     it.nextValue shouldEqual origList.get(position)
                     if (it.previousValue != null) {
@@ -36,7 +37,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
             "Replacement" - {
                 "should work correctly in the middle of the list" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toPairSubstitutingDoublyLinkedList()
+                    val mc = createFromList(origList)
                     mc.iterate {
                         when {
                             it.previousValue == 2 && it.nextValue == 3 -> 100
@@ -49,7 +50,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
 
                 "should fail on the first value" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toPairSubstitutingDoublyLinkedList()
+                    val mc = createFromList(origList)
                     shouldThrow<IllegalArgumentException> {
                         mc.iterate {
                             when {
@@ -62,7 +63,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
 
                 "should work on the first and second value" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toPairSubstitutingDoublyLinkedList()
+                    val mc = createFromList(origList)
                     mc.iterate {
                         when {
                             it.previousValue == 1 && it.nextValue == 2 -> 100
@@ -75,7 +76,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
 
                 "should work on the second and last value" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toPairSubstitutingDoublyLinkedList()
+                    val mc = createFromList(origList)
                     mc.iterate {
                         when {
                             it.previousValue == 3 && it.nextValue == 4 -> 100
@@ -88,7 +89,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
 
                 "should work on two overlapping values" {
                     val origList = arrayListOf(1, 2, 3, 4)
-                    val mc = origList.toPairSubstitutingDoublyLinkedList()
+                    val mc = createFromList(origList)
                     mc.iterate {
                         when {
                             it.previousValue == 3 && it.nextValue == 4 -> 100
