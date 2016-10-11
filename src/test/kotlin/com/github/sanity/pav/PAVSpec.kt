@@ -21,7 +21,7 @@ class PAVSpec : FreeSpec() {
         }
 
         "PairAdjacentViolators" - {
-            "should sort points by mx value" {
+            "should sort points by x value" {
                 val increasingPointsSorted = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0))
                 val increasingPointsUnSorted = listOf(Point(5.0, 3.0), Point(3.0, 1.0), Point(4.0, 2.0))
                 PairAdjacentViolators(increasingPointsUnSorted).isotonicPoints shouldEqual increasingPointsSorted
