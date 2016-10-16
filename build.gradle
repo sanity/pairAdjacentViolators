@@ -14,6 +14,7 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.10'
     }
 }
 
@@ -21,6 +22,7 @@ apply plugin: 'java'
 apply plugin: 'kotlin'
 apply plugin: 'maven'
 apply plugin: 'org.jetbrains.dokka'
+apply plugin: "info.solidsoft.pitest"
 
 sourceCompatibility = 1.6
 
@@ -43,6 +45,13 @@ task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
 task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
     classifier = 'javadoc'
     from javadoc.destinationDir
+}
+
+pitest {
+    targetClasses = ['com.github.sanity.pav.*']  //by default "${project.group}.*"
+    threads = 8
+    outputFormats = ['HTML']
+    jvmArgs = ['-Xmx1024m']
 }
 
 artifacts {

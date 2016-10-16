@@ -17,6 +17,7 @@ class PAVSpec : FreeSpec() {
                 val mergedY = (2.0 * 3.0 + 5.0 * 6.0) / (3.0 + 6.0)
                 val mergedWeight = 3.0 + 6.0
                 a.merge(b) shouldEqual Point(mergedX, mergedY, mergedWeight)
+
             }
         }
 
