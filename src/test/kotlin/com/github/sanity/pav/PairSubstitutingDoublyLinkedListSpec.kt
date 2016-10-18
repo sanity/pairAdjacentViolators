@@ -2,6 +2,7 @@ package com.github.sanity.pav
 
 import com.github.sanity.pav.PairSubstitutingDoublyLinkedList.Companion.createFromList
 import io.kotlintest.specs.FreeSpec
+import java.util.*
 
 /**
  * Created by ian on 9/24/16.
@@ -9,11 +10,17 @@ import io.kotlintest.specs.FreeSpec
 class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
     init {
         "PairSubstitutingDoublyLinkedList" - {
-            "toPairSubstitutingDoublyLinkedList" - {
+            "createFromList" - {
                 "should return the original unmodified list" {
                     val origList = arrayListOf(1, 2, 3)
                     val mc = createFromList(origList)
                     mc.toList() shouldEqual origList
+                }
+
+                "should fail on an empty list" {
+                    shouldThrow<IllegalArgumentException> {
+                        createFromList(ArrayList<Int>())
+                    }
                 }
             }
 

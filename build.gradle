@@ -50,7 +50,7 @@ task javadocJar(type: Jar, dependsOn: dokkaJavadoc) {
 pitest {
     targetClasses = ['com.github.sanity.pav.*']  //by default "${project.group}.*"
     threads = 8
-    outputFormats = ['HTML']
+    outputFormats = ['HTML', 'XML']
     jvmArgs = ['-Xmx1024m']
 }
 

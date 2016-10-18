@@ -7,7 +7,7 @@ import io.kotlintest.specs.FreeSpec
 /**
  * Created by ian on 9/23/16.
  */
-class PAVSpec : FreeSpec() {
+class PairAdjacentViolatorsSpec : FreeSpec() {
     init {
         "Points" - {
             "should merge correctly" {
@@ -17,7 +17,15 @@ class PAVSpec : FreeSpec() {
                 val mergedY = (2.0 * 3.0 + 5.0 * 6.0) / (3.0 + 6.0)
                 val mergedWeight = 3.0 + 6.0
                 a.merge(b) shouldEqual Point(mergedX, mergedY, mergedWeight)
+            }
 
+            "should default to a weight of 1.0" {
+                Point(0.0, 0.0).weight shouldEqual 1.0
+            }
+
+            "should convert to strings correctly" {
+                Point(1.0, 2.0).toString() shouldEqual "(1.0, 2.0)"
+                Point(1.0, 2.0, 3.0).toString() shouldEqual "(1.0, 2.0 :3.0)"
             }
         }
 
@@ -44,6 +52,11 @@ class PAVSpec : FreeSpec() {
                     PairAdjacentViolators(nonIncreasingPoints).isotonicPoints shouldEqual listOf(Point(1.5, 1.5, 2.0), Point(3.0, 5.0))
                 }
 
+                "should merge two points with the same y value" {
+                    val points = listOf(Point(1.0, 2.0), Point(2.0, 2.0), Point(3.0, 5.0))
+                    PairAdjacentViolators(points).isotonicPoints shouldEqual listOf(Point(1.5, 2.0, 2.0), Point(3.0, 5.0))
+                }
+
                 "should merge multiple non-increasing points" {
                     val nonIncreasingPoints = listOf(Point(1.0, 5.0), Point(2.0, 4.0), Point(3.0, 3.0))
                     PairAdjacentViolators(nonIncreasingPoints).isotonicPoints shouldEqual listOf(Point(2.0, 4.0, 3.0))
@@ -54,6 +67,11 @@ class PAVSpec : FreeSpec() {
                 "should not merge decreasing points" {
                     val decreasingPoints = listOf(Point(1.0, 5.0), Point(2.0, 4.0), Point(3.0, 3.0))
                     PairAdjacentViolators(decreasingPoints, DECREASING).isotonicPoints shouldEqual decreasingPoints
+                }
+
+                "should merge two points with the same y value" {
+                    val points = listOf(Point(1.0, 5.0), Point(2.0, 2.0), Point(3.0, 2.0))
+                    PairAdjacentViolators(points, DECREASING).isotonicPoints shouldEqual listOf(Point(1.0, 5.0),Point(2.5, 2.0, 2.0))
                 }
             }
 
