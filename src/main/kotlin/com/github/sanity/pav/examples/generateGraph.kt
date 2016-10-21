@@ -25,3 +25,4 @@ fun main(args: Array<String>) {
 }
 
 fun funX(x: Double): Double = x + 0.1 * x * x
+

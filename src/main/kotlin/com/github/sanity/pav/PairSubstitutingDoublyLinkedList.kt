@@ -96,23 +96,5 @@ class PairSubstitutingDoublyLinkedList<V>(var value: V, var previous: PairSubsti
         }
         return arrayList
     }
-
-    /**
-     * Check that the bi-directonal links are consistent, this is used for testing purposes
-     * and should never return anything but *true*
-     */
-    fun checkListIntegrity() : Boolean {
-        var mc: PairSubstitutingDoublyLinkedList<V>? = this
-        while (mc != null) {
-            val previous = mc.previous
-            if (previous != null && previous.next != mc) {
-                return false
-            }
-            mc = mc.next
-        }
-        return true
-    }
-
-    override fun toString() = "MC[$value]"
 }
 

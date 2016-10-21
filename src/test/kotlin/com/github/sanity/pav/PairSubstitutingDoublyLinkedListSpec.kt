@@ -111,3 +111,19 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
         }
     }
 }
+
+/**
+ * Check that the bi-directional links of a PairSubstitutingDoublyLinkedList are consistent
+ */
+
+fun <V> PairSubstitutingDoublyLinkedList<V>.checkListIntegrity(): Boolean {
+    var mc: PairSubstitutingDoublyLinkedList<V>? = this
+    while (mc != null) {
+        val previous = mc.previous
+        if (previous != null && previous.next != mc) {
+            return false
+        }
+        mc = mc.next
+    }
+    return true
+}
