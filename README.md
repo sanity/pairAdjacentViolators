@@ -15,8 +15,8 @@ A picture is worth a thousand words:
 ## Features
 
 * Tries to do one thing and do it well with minimal bloat, no external dependencies (other than Kotlin's stdlib)
-* Fairly comprehensive [unit tests](https://github.com/trystacks/pairAdjacentViolators/tree/master/src/test/kotlin/com/github/sanity/pav), achieving [100% mutation test coverage](https://sanity.github.io/pairAdjacentViolators/pitest-201610211708/com.github.sanity.pav/index.html) (not including the [spline implementation](https://github.com/sanity/pairAdjacentViolators/blob/master/src/main/kotlin/com/github/sanity/pav/MonotoneSpline.kt) which was ported
-  from Android)
+* Very thorough [unit tests](https://github.com/trystacks/pairAdjacentViolators/tree/master/src/test/kotlin/com/github/sanity/pav), achieving 
+[100% mutation test coverage](https://sanity.github.io/pairAdjacentViolators/pitest-201610211708/com.github.sanity.pav/index.html) (not including the [spline implementation](https://github.com/sanity/pairAdjacentViolators/blob/master/src/main/kotlin/com/github/sanity/pav/MonotoneSpline.kt) which was ported from Android)
 * Employs an isotonic spline algorithm for smooth interpolation
 * Fairly efficient implementation without compromizing code readability
 * While implemented in Kotlin, works nicely from Java and other JVM languages
