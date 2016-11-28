@@ -35,10 +35,12 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
             val previous = cursor.previousValue
             val next = cursor.nextValue
             if (previous != null) {
-                val shouldMerge = when (mode) {
+                val shouldMerge =
+                        previous.x == next.x || (
+                                when (mode) {
                     PAVMode.INCREASING -> previous.y >= next.y
                     PAVMode.DECREASING -> previous.y <= next.y
-                }
+                                })
                 if (shouldMerge) {
                     previous.merge(next)
                 } else {
