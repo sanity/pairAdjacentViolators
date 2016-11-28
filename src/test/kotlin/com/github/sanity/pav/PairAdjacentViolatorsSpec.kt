@@ -36,6 +36,12 @@ class PairAdjacentViolatorsSpec : FreeSpec() {
                 PairAdjacentViolators(increasingPointsUnSorted).isotonicPoints shouldEqual increasingPointsSorted
             }
 
+            "should merge two points with the same x value" {
+                val points = listOf(Point(1.0, 5.0), Point(1.0, 6.0), Point(3.0, 10.0))
+                val mergedPoints = listOf(Point(1.0, 5.5, 2.0), Point(3.0, 10.0))
+                PairAdjacentViolators(points).isotonicPoints shouldEqual mergedPoints
+            }
+
             "should 'backtrack' to merge previous points where necessary" {
                 val points = listOf(Point(1.0, 5.0), Point(2.0, 6.0), Point(3.0, 1.0))
                 PairAdjacentViolators(points).isotonicPoints shouldEqual listOf(Point(2.0, (5.0 + 6.0 + 1.0) / 3.0, 3.0))
