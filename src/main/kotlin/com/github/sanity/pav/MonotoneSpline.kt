@@ -66,7 +66,7 @@ class MonotoneSpline(private val xPoints: DoubleArray, private val yPoints: Doub
                 if (a < 0.0 || b < 0.0) {
                     throw IllegalArgumentException("The control points must have monotonic Y values.")
                 }
-                val h = Math.hypot(a.toDouble(), b.toDouble()).toFloat()
+                val h = Math.hypot(a, b)
                 if (h > 3.0) {
                     val t = 3.0 / h
                     tangents[i] = t * a * d[i]
