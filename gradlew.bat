@@ -56,7 +56,7 @@ set CMD_LINE_ARGS=
 set _SKIP=2
 
 :win9xME_args_slurp
-if "controlXPoints%~1" == "controlXPoints" goto execute
+if "xPoints%~1" == "xPoints" goto execute
 
 set CMD_LINE_ARGS=%*
 

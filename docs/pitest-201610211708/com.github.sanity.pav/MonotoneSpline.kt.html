@@ -185,7 +185,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>class MonotoneSpline(private val controlXPoints: DoubleArray, private val controlYPoints: DoubleArray) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>class MonotoneSpline(private val xPoints: DoubleArray, private val yPoints: DoubleArray) {</span></pre></td></tr>
 
 
 <tr>
@@ -259,7 +259,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>        if (controlXPoints.size != controlYPoints.size || controlXPoints.size &#60; 2) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>        if (xPoints.size != yPoints.size || xPoints.size &#60; 2) {</span></pre></td></tr>
 
 
 <tr>
@@ -301,7 +301,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        val pointsCount = controlXPoints.size</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        val pointsCount = xPoints.size</span></pre></td></tr>
 
 
 <tr>
@@ -383,7 +383,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>            val h = controlXPoints[i + 1] - controlXPoints[i]</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>            val h = xPoints[i + 1] - xPoints[i]</span></pre></td></tr>
 
 
 <tr>
@@ -446,7 +446,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>            d[i] = (controlYPoints[i + 1] - controlYPoints[i]) / h</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>            d[i] = (yPoints[i + 1] - yPoints[i]) / h</span></pre></td></tr>
 
 
 <tr>
@@ -1053,7 +1053,7 @@ body{
 <span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        val n = controlXPoints.size</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        val n = xPoints.size</span></pre></td></tr>
 
 
 <tr>
@@ -1116,7 +1116,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>        if (x &#60;= controlXPoints[0]) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>        if (x &#60;= xPoints[0]) {</span></pre></td></tr>
 
 
 <tr>
@@ -1132,7 +1132,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            return controlYPoints[0]</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            return yPoints[0]</span></pre></td></tr>
 
 
 <tr>
@@ -1164,7 +1164,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>        if (x &#62;= controlXPoints[n - 1]) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>        if (x &#62;= xPoints[n - 1]) {</span></pre></td></tr>
 
 
 <tr>
@@ -1181,7 +1181,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            return controlYPoints[n - 1]</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            return yPoints[n - 1]</span></pre></td></tr>
 
 
 <tr>
@@ -1255,7 +1255,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>        while (x &#62;= controlXPoints[i + 1]) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>        while (x &#62;= xPoints[i + 1]) {</span></pre></td></tr>
 
 
 <tr>
@@ -1287,7 +1287,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            if (x == controlYPoints[i]) {</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            if (x == yPoints[i]) {</span></pre></td></tr>
 
 
 <tr>
@@ -1303,7 +1303,7 @@ body{
 
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>                return controlYPoints[i]</span></pre></td></tr>
+<td class='uncovered'><pre><span  class='survived'>                return yPoints[i]</span></pre></td></tr>
 
 
 <tr>
@@ -1362,7 +1362,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>        val h = controlXPoints[i + 1] - controlXPoints[i]</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>        val h = xPoints[i + 1] - xPoints[i]</span></pre></td></tr>
 
 
 <tr>
@@ -1379,7 +1379,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>        val t = (x - controlXPoints[i]) / h</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>        val t = (x - xPoints[i]) / h</span></pre></td></tr>
 
 
 <tr>
@@ -1417,7 +1417,7 @@ body{
 
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>        return (controlYPoints[i] * (1 + 2 * t) + h * tangents[i] * t) * (1 - t) * (1 - t) + (tangents[i + 1] * (3 - 2 * t) + h * tangents[i + 1] * (t - 1)) * t * t</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>        return (yPoints[i] * (1 + 2 * t) + h * tangents[i] * t) * (1 - t) * (1 - t) + (tangents[i + 1] * (3 - 2 * t) + h * tangents[i + 1] * (t - 1)) * t * t</span></pre></td></tr>
 
 
 <tr>
@@ -1501,7 +1501,7 @@ body{
 <span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        val n = controlXPoints.size</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        val n = xPoints.size</span></pre></td></tr>
 
 
 <tr>
@@ -1593,7 +1593,7 @@ body{
 <span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>            str.append(&#34;(&#34;).append(controlXPoints[i])</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>            str.append(&#34;(&#34;).append(xPoints[i])</span></pre></td></tr>
 
 
 <tr>
@@ -1607,7 +1607,7 @@ body{
 <span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>            str.append(&#34;, &#34;).append(controlYPoints[i])</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>            str.append(&#34;, &#34;).append(yPoints[i])</span></pre></td></tr>
 
 
 <tr>

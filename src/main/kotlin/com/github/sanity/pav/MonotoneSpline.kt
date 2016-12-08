@@ -1,29 +1,52 @@
 package com.github.sanity.pav
 /**
- * Performs spline interpolation given a set of control points.
+/**
+ * Creates a monotone cubic spline from a given set of control points.
+
+ * The spline is guaranteed to pass through each control point exactly.
+ * Moreover, assuming the control points are monotonic (Y is non-decreasing or
+ * non-increasing) then the interpolated values will also be monotonic.
+
+ * This function uses the Fritsch-Carlson method for computing the spline parameters.
+ * http://en.wikipedia.org/wiki/Monotone_cubic_interpolation
+
+ * @param xPoints The X component of the control points, strictly increasing.
+ * *
+ * @param yPoints The Y component of the control points, monotonic.
+ * *
+ * @return
+ * *
+ * *
+ * @throws IllegalArgumentException if the X or Y arrays are null, have
+ * * different lengths or have fewer than 2 values.
+ * *
+ * @throws IllegalArgumentException if the control points are not monotonic.
+*/
  *
  * This implementation converted from java from https://android.googlesource.com/platform/frameworks/base/+/master/core/java/android/util/MonotoneSpline.java
  *
  * Includes a fix for the following bug: https://code.google.com/p/android/issues/detail?id=222470
  */
-class MonotoneSpline(private val controlXPoints: DoubleArray, private val controlYPoints: DoubleArray) {
+class MonotoneSpline(private val xPoints: DoubleArray, private val yPoints: DoubleArray) {
+
+    constructor(points : Iterable<PairAdjacentViolators.Point>) : this(points.map { it.x }.toDoubleArray(), points.map { it.y }.toDoubleArray())
 
     private val tangents: DoubleArray
 
     init {
-        if (controlXPoints.size != controlYPoints.size || controlXPoints.size < 2) {
+        if (xPoints.size != yPoints.size || xPoints.size < 2) {
             throw IllegalArgumentException("There must be at least two control points and the arrays must be of equal length.")
         }
-        val pointsCount = controlXPoints.size
+        val pointsCount = xPoints.size
         val d = DoubleArray(pointsCount - 1) // could optimize this out
         tangents = DoubleArray(pointsCount)
         // Compute slopes of secant lines between successive points.
         for (i in 0..pointsCount - 1 - 1) {
-            val h = controlXPoints[i + 1] - controlXPoints[i]
+            val h = xPoints[i + 1] - xPoints[i]
             if (h <= 0f) {
                 throw IllegalArgumentException("The control points must all have strictly increasing X values.")
             }
-            d[i] = (controlYPoints[i + 1] - controlYPoints[i]) / h
+            d[i] = (yPoints[i + 1] - yPoints[i]) / h
         }
         // Initialize the tangents as the average of the secants.
         tangents[0] = d[0]
@@ -62,72 +85,21 @@ class MonotoneSpline(private val controlXPoints: DoubleArray, private val contro
      * @return The interpolated Y = f(X) value.
      */
     fun interpolate(x: Double): Double {
-        // Handle the boundary cases.
-        val n = controlXPoints.size
-        if (x.isNaN()) {
-            return x
-        }
-        if (x <= controlXPoints[0]) {
-            return controlYPoints[0]
-        }
-        if (x >= controlXPoints[n - 1]) {
-            return controlYPoints[n - 1]
-        }
-        // Find the index 'i' of the last point with smaller X.
-        // We know this will be within the spline due to the boundary tests.
-        var i = 0
-        while (x >= controlXPoints[i + 1]) {
-            i += 1
-            if (x == controlYPoints[i]) {
-                return controlYPoints[i]
+        if (x < xPoints.first()) return yPoints.first()
+        if (x > xPoints.last()) return yPoints.last()
+        val xIndex = xPoints.betterBinarySearch(x)
+        return when (xIndex) {
+            is BinarySearchResult.Exact -> yPoints[xIndex.index]
+            is BinarySearchResult.Between -> {
+                val x1 = xPoints[xIndex.lowIndex]
+                val y1 = yPoints[xIndex.lowIndex]
+                val m1 = tangents[xIndex.lowIndex]
+                val x2 = xPoints[xIndex.highIndex]
+                val y2 = yPoints[xIndex.highIndex]
+                val m2 = tangents[xIndex.highIndex]
+                val chs = CubicHermiteSpline(x1 = x1, y1 = y1, m1 = m1, x2 = x2, y2 = y2, m2 = m2)
+                return chs.interpolate(x)
             }
         }
-        // Perform cubic Hermite spline interpolation.
-        val h = controlXPoints[i + 1] - controlXPoints[i]
-        val t = (x - controlXPoints[i]) / h
-        return (controlYPoints[i] * (1 + 2 * t) + h * tangents[i] * t) * (1 - t) * (1 - t) + (tangents[i + 1] * (3 - 2 * t) + h * tangents[i + 1] * (t - 1)) * t * t
-    }
-
-    // For debugging.
-    override fun toString(): String {
-        val str = StringBuilder()
-        val n = controlXPoints.size
-        str.append("[")
-        for (i in 0..n - 1) {
-            if (i != 0) {
-                str.append(", ")
-            }
-            str.append("(").append(controlXPoints[i])
-            str.append(", ").append(controlYPoints[i])
-            str.append(": ").append(tangents[i]).append(")")
-        }
-        str.append("]")
-        return str.toString()
-    }
-
-    companion object {
-        /**
-         * Creates a monotone cubic spline from a given set of control points.
-
-         * The spline is guaranteed to pass through each control point exactly.
-         * Moreover, assuming the control points are monotonic (Y is non-decreasing or
-         * non-increasing) then the interpolated values will also be monotonic.
-
-         * This function uses the Fritsch-Carlson method for computing the spline parameters.
-         * http://en.wikipedia.org/wiki/Monotone_cubic_interpolation
-
-         * @param x The X component of the control points, strictly increasing.
-         * *
-         * @param y The Y component of the control points, monotonic.
-         * *
-         * @return
-         * *
-         * *
-         * @throws IllegalArgumentException if the X or Y arrays are null, have
-         * * different lengths or have fewer than 2 values.
-         * *
-         * @throws IllegalArgumentException if the control points are not monotonic.
-         */
-
     }
 }
