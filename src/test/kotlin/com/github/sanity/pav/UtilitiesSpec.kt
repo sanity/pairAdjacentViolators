@@ -12,10 +12,14 @@ class UtilitiesSpec : FreeSpec() {
         "betterBinarySearch()" - {
             val a = doubleArrayOf(0.3, 0.7, 0.8, 1.0, 1.2)
             "should find an exact value" {
-                a.betterBinarySearch(0.8) shouldBe Exact(2)
+                val exact = a.betterBinarySearch(0.8)
+                exact shouldBe Exact(2)
+                exact.toString() shouldBe "Exact(2)"
             }
             "should find an approximate match" {
-                a.betterBinarySearch(0.9) shouldBe Between(2, 3)
+                val between = a.betterBinarySearch(0.9)
+                between shouldBe Between(2, 3)
+                between.toString() shouldBe "Between(2, 3)"
             }
             "should ensure that the sought value is in-range" {
                 shouldThrow<IllegalArgumentException> {
