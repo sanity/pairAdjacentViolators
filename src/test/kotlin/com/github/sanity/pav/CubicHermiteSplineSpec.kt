@@ -1,5 +1,6 @@
 package com.github.sanity.pav
 
+import com.github.sanity.pav.spline.CubicHermiteSpline
 import io.kotlintest.specs.FreeSpec
 
 /**

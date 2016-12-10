@@ -1,5 +1,5 @@
 group 'com.github.sanity'
-version '1.1.0'
+version '1.2.0'
 
 buildscript {
     ext.kotlin_version = '1.0.4'
@@ -7,9 +7,6 @@ buildscript {
 
     repositories {
         mavenCentral()
-        maven {
-            url "http://dl.bintray.com/kotlin/kotlin-eap-1.1"
-        }
         maven {
             url "https://plugins.gradle.org/m2/"
         }
@@ -31,9 +28,6 @@ sourceCompatibility = 1.6
 
 repositories {
     mavenCentral()
-    maven {
-        url "http://dl.bintray.com/kotlin/kotlin-eap-1.1"
-    }
 }
 
 dependencies {

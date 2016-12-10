@@ -1,7 +1,6 @@
 package com.github.sanity.pav
 
 import com.github.sanity.pav.PairAdjacentViolators.PAVMode.DECREASING
-import com.github.sanity.pav.PairAdjacentViolators.Point
 import io.kotlintest.specs.FreeSpec
 
 /**

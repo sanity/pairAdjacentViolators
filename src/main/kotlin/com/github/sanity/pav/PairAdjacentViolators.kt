@@ -1,6 +1,8 @@
 package com.github.sanity.pav
 
 import com.github.sanity.pav.PairAdjacentViolators.InterpolationStrategy.SPLINE
+import com.github.sanity.pav.spline.MonotoneSpline
+import java.util.*
 
 /**
  * Implements the "pair adjacent violators" algorithm, also known as "pool adjacent violators", for isotonic regression.
@@ -10,24 +12,10 @@ import com.github.sanity.pav.PairAdjacentViolators.InterpolationStrategy.SPLINE
 class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) {
 
     /**
-     * A point in 2D space, with an optional weight (defaults to 1).
-     */
-    data class Point @JvmOverloads constructor(val x: Double, val y: Double, val weight: Double = 1.0) {
-        fun merge(other: Point): Point {
-            val combinedWeight = weight + other.weight
-            val nx = ((x * weight) + (other.x * other.weight)) / combinedWeight
-            val ny = ((y * weight) + (other.y * other.weight)) / combinedWeight
-            return Point(nx, ny, combinedWeight)
-        }
-
-        override fun toString() = "($x, $y${if (weight != 1.0) " :$weight" else ""})"
-    }
-
-    /**
      * The points after the regression, should either be increasing or decreasing depending
      * on how the PairAdjacentViolators object is configured.
      */
-    val isotonicPoints: List<Point>
+    val isotonicPoints: ArrayList<Point>
 
     init {
         val points: PairSubstitutingDoublyLinkedList<Point> = PairSubstitutingDoublyLinkedList.createFromList(originalPoints.sortedBy { it.x })
@@ -51,7 +39,7 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
             }
         }
 
-        isotonicPoints = points.toList()
+        isotonicPoints = points.toArrayList()
     }
 
     @JvmOverloads fun interpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
@@ -65,7 +53,7 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
     @JvmOverloads fun inverseInterpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
         when (strategy) {
             SPLINE -> return {
-                val spline = MonotoneSpline(isotonicPoints.map { it.y }.toDoubleArray(), isotonicPoints.map { it.x }.toDoubleArray())
+                val spline = MonotoneSpline(isotonicPoints.map {Point(it.y, it.x)})
                 spline.interpolate(it)
             }
         }

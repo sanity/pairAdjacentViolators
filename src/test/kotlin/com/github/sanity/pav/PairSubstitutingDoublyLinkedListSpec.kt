@@ -14,7 +14,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
                 "should return the original unmodified list" {
                     val origList = arrayListOf(1, 2, 3)
                     val mc = createFromList(origList)
-                    mc.toList() shouldEqual origList
+                    mc.toArrayList() shouldEqual origList
                 }
 
                 "should fail on an empty list" {
@@ -51,7 +51,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
                             else -> null
                         }
                     }
-                    mc.toList() shouldEqual arrayListOf(1, 100, 4)
+                    mc.toArrayList() shouldEqual arrayListOf(1, 100, 4)
                     mc.checkListIntegrity() shouldBe(true)
                 }
 
@@ -77,7 +77,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
                             else -> null
                         }
                     }
-                    mc.toList() shouldEqual arrayListOf(100, 3, 4)
+                    mc.toArrayList() shouldEqual arrayListOf(100, 3, 4)
                     mc.checkListIntegrity() shouldBe(true)
                 }
 
@@ -90,7 +90,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
                             else -> null
                         }
                     }
-                    mc.toList() shouldEqual arrayListOf(1, 2, 100)
+                    mc.toArrayList() shouldEqual arrayListOf(1, 2, 100)
                     mc.checkListIntegrity() shouldBe(true)
                 }
 
@@ -104,7 +104,7 @@ class PairSubstitutingDoublyLinkedListSpec : FreeSpec() {
                             else -> null
                         }
                     }
-                    mc.toList() shouldEqual arrayListOf(1, 200)
+                    mc.toArrayList() shouldEqual arrayListOf(1, 200)
                     mc.checkListIntegrity() shouldBe(true)
                 }
             }

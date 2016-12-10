@@ -1,4 +1,4 @@
-package com.github.sanity.pav
+package com.github.sanity.pav.spline
 
 /**
  * Created by ian on 12/7/16.

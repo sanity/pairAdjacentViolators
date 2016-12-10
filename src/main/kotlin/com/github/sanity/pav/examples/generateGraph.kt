@@ -1,7 +1,7 @@
 package com.github.sanity.pav.examples
 
 import com.github.sanity.pav.PairAdjacentViolators
-import com.github.sanity.pav.PairAdjacentViolators.Point
+import com.github.sanity.pav.Point
 import java.util.*
 
 /**

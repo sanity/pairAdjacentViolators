@@ -1,5 +1,7 @@
 package com.github.sanity.pav
 
+import java.util.*
+
 /**
  * Created by ian on 12/8/16.
  */
@@ -9,11 +11,18 @@ fun DoubleArray.betterBinarySearch(v: Double): BinarySearchResult {
         throw IllegalArgumentException("v ($v) is outside range of DoubleArray (${this.first()}0${this.last()})")
     }
     val result = this.binarySearch(v)
-    return if (result >= 0) {
-        BinarySearchResult.Exact(result)
+    return toBinarySearchResult(result)
+}
+
+fun <T> List<T>.betterBinarySearch(v: T, comparator: Comparator<T>) = toBinarySearchResult(this.binarySearch(v, comparator))
+
+fun <T> List<T>.toArrayList(): ArrayList<T> {
+    return if (this is ArrayList) {
+        this
     } else {
-        val insertionPoint = -result - 1
-        BinarySearchResult.Between(insertionPoint - 1, insertionPoint)
+        val r = ArrayList<T>()
+        r.addAll(this)
+        r
     }
 }
 
@@ -43,5 +52,15 @@ sealed class BinarySearchResult {
         override fun toString(): String {
             return "Between($lowIndex, $highIndex)"
         }
+    }
+}
+
+
+private fun toBinarySearchResult(result: Int): BinarySearchResult {
+    return if (result >= 0) {
+        BinarySearchResult.Exact(result)
+    } else {
+        val insertionPoint = -result - 1
+        BinarySearchResult.Between(insertionPoint - 1, insertionPoint)
     }
 }

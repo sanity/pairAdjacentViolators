@@ -88,7 +88,7 @@ class PairSubstitutingDoublyLinkedList<V>(var value: V, var previous: PairSubsti
     /**
      * Transform the PairSubstitutingDoublyLinkedList into a List
      */
-    fun toList(): List<V> {
+    fun toArrayList(): ArrayList<V> {
         val arrayList = ArrayList<V>()
         iterate {
             arrayList.add(it.nextValue)
