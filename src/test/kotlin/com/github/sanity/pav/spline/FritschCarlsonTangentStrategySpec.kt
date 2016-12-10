@@ -17,7 +17,7 @@ class FritschCarlsonTangentStrategySpec : FreeSpec() {
                     PointWithSecants(Point(1.0, 1.0), Secant(0.1), Secant(0.2)),
                     PointWithSecants(Point(2.0, 2.0), Secant(0.2), null))
 
-            val pointsWithTangents = fcts.step2(points)
+            val pointsWithTangents = fcts.initTangentsToSecantAverages(points)
             pointsWithTangents.size shouldBe 3
 
             "First tangent should be the same as the first secant" {
@@ -41,6 +41,5 @@ class FritschCarlsonTangentStrategySpec : FreeSpec() {
                 }
             }
         }
-
     }
 }

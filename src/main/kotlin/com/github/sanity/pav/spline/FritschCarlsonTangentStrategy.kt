@@ -22,14 +22,19 @@ class FritschCarlsonTangentStrategy : TangentStrategy {
      */
 
     override fun compute(points: Iterable<PointWithSecants>): ArrayList<PointWithTangents> {
-        val tangents = step2(points)
-        return steps3to5(tangents)
+        val tangents = initTangentsToSecantAverages(points)
+        return updateTangentsToEnsureMonotonicity(tangents)
 
     }
 
-    internal fun step2(points: Iterable<PointWithSecants>): ArrayList<PointWithTangents> {
+    internal fun initTangentsToSecantAverages(points: Iterable<PointWithSecants>): ArrayList<PointWithTangents> {
+        // See steps 1 and 2
         return points.map {
-            val tangent: Double = when {
+            /* Wikipedia says that if secant signs differ then set tangent to zero, but how could secant
+             * signs differ if input points are monotonic?
+             */
+            val tangent: Double =
+                    when {
                 it.secantBefore != null && it.secantAfter != null -> (it.secantBefore.slope + it.secantAfter.slope) / 2.0
                 it.secantBefore != null -> it.secantBefore.slope
                 else -> it.secantAfter!!.slope // !! shouldn't be necessary, but smartcasting not smart enough yet
@@ -38,24 +43,42 @@ class FritschCarlsonTangentStrategy : TangentStrategy {
         }.toArrayList()
     }
 
-    internal fun steps3to5(pointsWithTangents: List<PointWithTangents>): ArrayList<PointWithTangents> {
-        val m = pointsWithTangents.map { it.tangent }.toDoubleArray()
-        val Δ = pointsWithTangents.map { it.pointWithSecants.secantAfter }.filterNotNull().map { it.slope }.toDoubleArray()
-        val ignoreSteps4and5 = step3(m, Δ)
+    internal fun updateTangentsToEnsureMonotonicity(pointsWithTangents: List<PointWithTangents>): ArrayList<PointWithTangents> {
+        // See steps 3 to 5
+        val m = pointsWithTangents.map { it.tangent }.toArrayList()
+        val Δ = pointsWithTangents.map { it.pointWithSecants.secantAfter }.filterNotNull().map { it.slope }.toArrayList()
+        val y = pointsWithTangents.map { it.y }.toArrayList()
+        val ignoreSteps4and5 = setTangentsTo0WhenTwoSuccessiveYValuesAreTheSame(m, y)
         val α = ArrayList<Double>()
         val β = ArrayList<Double>()
         for (k in 0..(m.size - 2)) {
             if (!ignoreSteps4and5.contains(k)) {
                 α[k] = m[k] / Δ[k]
                 β[k] = m[k + 1] / Δ[k]
-                step4(k, α, β)
-                step5(k, m, Δ, α, β)
+                ensureInputDataPointsAreStrictlyMonotone(k, α, β)
+                ensureTangentsMeetConstraints(k, m, Δ, α, β)
             }
         }
         return pointsWithTangents.mapIndexed { k, pointWithTangents -> pointWithTangents.copy(tangent = m[k]) }.toArrayList()
     }
 
-    private fun step5(k: Int, m: DoubleArray, Δ: DoubleArray, α: ArrayList<Double>, β: ArrayList<Double>) {
+    internal fun setTangentsTo0WhenTwoSuccessiveYValuesAreTheSame(m: ArrayList<Double>, y: ArrayList<Double>): Set<Int> {
+        // See Step 3
+        val skipNextSteps = HashSet<Int>()
+        for (k in 0..(m.size - 2)) {
+            if (y[k] == y[k + 1]) {
+                m[k] = 0.0
+                skipNextSteps.add(k)
+                m[k + 1] = 0.0
+                skipNextSteps.add(k + 1)
+            }
+        }
+        return skipNextSteps
+    }
+
+
+    internal fun ensureTangentsMeetConstraints(k: Int, m: ArrayList<Double>, Δ: ArrayList<Double>, α: ArrayList<Double>, β: ArrayList<Double>) {
+        // See Step 5
         val vectorMagnitude = sqrt(pow(α[k], 2.0) + pow(β[k], 2.0))
         if (vectorMagnitude > 3.0) {
             val Γk = 3.0 / vectorMagnitude
@@ -64,22 +87,10 @@ class FritschCarlsonTangentStrategy : TangentStrategy {
         }
     }
 
-    private fun step4(k: Int, α: ArrayList<Double>, β: ArrayList<Double>) {
+    internal fun ensureInputDataPointsAreStrictlyMonotone(k: Int, α: ArrayList<Double>, β: ArrayList<Double>) {
         if ((α[k] < 0.0) || β[k] < 0.0) {
             throw IllegalArgumentException("Input datapoints are not strictly monotone")
         }
     }
 
-    internal fun step3(m: DoubleArray, Δ: DoubleArray): Set<Int> {
-        val ignoreSteps4and5 = HashSet<Int>()
-        for (k in 1..(m.size - 2)) {
-            val prevAndCurrentDeltasHaveDifferentSign = (Δ[k - 1] < 0.0 && Δ[k] >= 0.0) || (Δ[k - 1] > 0.0 && Δ[k] <= 0.0)
-            if (prevAndCurrentDeltasHaveDifferentSign) {
-                m[k] = 0.0
-            }
-            ignoreSteps4and5.add(k - 1)
-            ignoreSteps4and5.add(k)
-        }
-        return ignoreSteps4and5
-    }
 }
