@@ -11,7 +11,7 @@ import java.util.*
  **/
 class FritschCarlsonTangentStrategy : TangentStrategy {
     /*
-     * The code is intended to model the description on the Wikipedia description closely (as of 06:26, 14 May 2016),
+     * The code is intended to model the description in the Wikipedia article closely (as of 06:26, 14 May 2016),
      * right down to the use of greek letters.
      *
      * I'm sure there are more elegant ways to implement the algorithm, it's not at all functional, but this seemed like
@@ -92,5 +92,4 @@ class FritschCarlsonTangentStrategy : TangentStrategy {
             throw IllegalArgumentException("Input datapoints are not strictly monotone")
         }
     }
-
 }
