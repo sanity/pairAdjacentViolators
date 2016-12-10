@@ -49,12 +49,12 @@ class FritschCarlsonTangentStrategy : TangentStrategy {
         val Δ = pointsWithTangents.map { it.pointWithSecants.secantAfter }.filterNotNull().map { it.slope }.toArrayList()
         val y = pointsWithTangents.map { it.y }.toArrayList()
         val ignoreSteps4and5 = setTangentsTo0WhenTwoSuccessiveYValuesAreTheSame(m, y)
-        val α = ArrayList<Double>()
-        val β = ArrayList<Double>()
+        val α = ArrayList<Double>(m.size)
+        val β = ArrayList<Double>(m.size)
         for (k in 0..(m.size - 2)) {
             if (!ignoreSteps4and5.contains(k)) {
-                α[k] = m[k] / Δ[k]
-                β[k] = m[k + 1] / Δ[k]
+                α.add(m[k] / Δ[k])
+                β.add(m[k + 1] / Δ[k])
                 ensureInputDataPointsAreStrictlyMonotone(k, α, β)
                 ensureTangentsMeetConstraints(k, m, Δ, α, β)
             }
