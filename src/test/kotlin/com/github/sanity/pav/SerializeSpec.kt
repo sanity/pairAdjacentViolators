@@ -36,7 +36,7 @@ class SerializeSpec : FreeSpec() {
     }
 }
 
-inline fun <T> open(path: String): T {
+fun <T> open(path: String): T {
     val fin = FileInputStream(path)
     val obj = ObjectInputStream(fin).readObject()
     fin.close()
