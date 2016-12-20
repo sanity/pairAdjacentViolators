@@ -2,6 +2,7 @@ package com.github.sanity.pav
 
 import com.github.sanity.pav.PairAdjacentViolators.InterpolationStrategy.SPLINE
 import com.github.sanity.pav.spline.MonotoneSpline
+import java.io.Serializable
 import java.util.*
 
 /**
@@ -9,7 +10,7 @@ import java.util.*
  */
 
 
-class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) {
+class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) : Serializable {
 
     /**
      * The points after the regression, should either be increasing or decreasing depending
