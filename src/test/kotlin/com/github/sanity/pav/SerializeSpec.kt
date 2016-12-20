@@ -1,8 +1,8 @@
 package com.github.sanity.pav
 
 import io.kotlintest.specs.FreeSpec
-import java.io.FileInputStream
-import java.io.FileOutputStream
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 
@@ -19,34 +19,34 @@ class SerializeSpec : FreeSpec() {
         )
 
         "Point should be serializable and deserizable" {
-            val savedPoint = save(point, "point")
-            val loadedPoint: Point = open("point")
+            val serializedPoint = serialize(point, "point")
+            val deserializedPoint: Point = deserialize(serializedPoint)
 
-            savedPoint.x shouldBe exactly(loadedPoint.x)
-            savedPoint.y shouldBe exactly(loadedPoint.y)
-            savedPoint.weight shouldBe exactly(loadedPoint.weight)
+            deserializedPoint.x shouldBe exactly(point.x)
+            deserializedPoint.y shouldBe exactly(point.y)
+            deserializedPoint.weight shouldBe exactly(point.weight)
         }
 
         "PairAdjacentViolators should be serializable and deserizable" {
-            val savedPav = save(pav, "pav")
-            val loadedPav: PairAdjacentViolators = open("pav")
+            val serializedPAV = serialize(pav, "pav")
+            val deserializedPAV: PairAdjacentViolators = deserialize(serializedPAV)
 
-            savedPav.isotonicPoints shouldEqual loadedPav.isotonicPoints
+            deserializedPAV.isotonicPoints shouldEqual pav.isotonicPoints
         }
     }
 }
 
-fun <T> open(path: String): T {
-    val fin = FileInputStream(path)
-    val obj = ObjectInputStream(fin).readObject()
-    fin.close()
+private fun <T> deserialize(byteArray: ByteArray): T {
+    val bais = ByteArrayInputStream(byteArray)
+    val obj = ObjectInputStream(bais).readObject()
+    bais.close()
 
     return obj as T
 }
 
-fun <T> save(obj: T, path: String) : T {
-    val fout = FileOutputStream(path)
-    ObjectOutputStream(fout).writeObject(obj)
-    fout.close()
-    return obj
+private fun <T> serialize(obj: T, path: String): ByteArray {
+    val baos = ByteArrayOutputStream()
+    ObjectOutputStream(baos).writeObject(obj)
+    baos.close()
+    return baos.toByteArray()
 }

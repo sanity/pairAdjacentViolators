@@ -1,0 +1,705 @@
+<html>
+<head>
+<style type='text/css'>
+html, body, div, span, p, blockquote, pre {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+body{
+	line-height: 1;
+	color: black;
+	background: white;
+	margin-left: 20px;
+}
+
+.src { 
+	border: 1px solid #dddddd;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
+	font-family: Consolas, Courier, monospace;
+}
+
+
+.covered {background-color: #ddffdd}
+.uncovered {background-color: #ffdddd}
+.killed {background-color: #aaffaa}
+.survived {background-color: #ffaaaa}
+.uncertain {background-color: #dde7ef}
+.run_error {background-color: #dde7ef}
+.na {background-color: #eeeeee}
+.timed_out {background-color: #dde7ef}
+.non_viable {background-color: #aaffaa}
+.memory_error {background-color: #dde7ef}
+.not_started {background-color: #dde7ef; color : red}
+.no_coverage {background-color: #ffaaaa}
+
+
+.pop {outline:none; }
+.pop strong {line-height:30px;}
+.pop {text-decoration:none;}
+.pop span { z-index:10;display:none; padding:14px 20px; margin-top:-30px; margin-left:28px; width:800px; line-height:16px; word-wrap:break-word; }
+.pop:hover span{ display:inline; position:absolute; color:#111; border:1px solid #DCA; background:#fffAF0;}
+
+.pop span { border-radius:4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -moz-box-shadow: 5px 5px 8px #CCC; -webkit-box-shadow: 5px 5px 8px #CCC; box-shadow: 5px 5px 8px #CCC; }
+</style>
+
+</head>
+<body>
+
+
+<h1>CubicHermiteSpline.kt</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package com.github.sanity.pav.spline</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Created by ian on 12/7/16.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_6'/>
+6
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_6'>6</a>
+<span>
+1. getM1 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getM1 &rarr; SURVIVED<br/>
+2. getM2 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getM2 &rarr; SURVIVED<br/>
+3. getX1 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getX1 &rarr; SURVIVED<br/>
+4. getX2 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getX2 &rarr; SURVIVED<br/>
+5. getY1 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getY1 &rarr; SURVIVED<br/>
+6. getY2 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getY2 &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>class CubicHermiteSpline(val x1: Double, val y1: Double, val m1: Double, val x2: Double, val y2: Double, val m2: Double) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    fun interpolate(x: Double): Double {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_9'/>
+9
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_9'>3</a>
+<span>
+1. interpolate : Replaced double subtraction with addition &rarr; KILLED<br/>
+2. interpolate : Replaced double subtraction with addition &rarr; KILLED<br/>
+3. interpolate : Replaced double division with multiplication &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        val t = (x - x1) / (x2 - x1)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_10'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        val pk = y1</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_11'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        val pk1 = y2</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_12'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        val xk = x1</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_13'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        val xk1 = x2</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_14'/>
+14
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_14'>1</a>
+<span>
+1. interpolate : Replaced double multiplication with division &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        val t1 = h00(t) * pk</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_15'/>
+15
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_15'>3</a>
+<span>
+1. interpolate : Replaced double subtraction with addition &rarr; KILLED<br/>
+2. interpolate : Replaced double multiplication with division &rarr; KILLED<br/>
+3. interpolate : Replaced double multiplication with division &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        val t2 = h10(t) * (xk1 - xk) * m1</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_16'/>
+16
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_16'>1</a>
+<span>
+1. interpolate : Replaced double multiplication with division &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        val t3 = h01(t) * pk1</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_17'/>
+17
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_17'>3</a>
+<span>
+1. interpolate : Replaced double subtraction with addition &rarr; KILLED<br/>
+2. interpolate : Replaced double multiplication with division &rarr; KILLED<br/>
+3. interpolate : Replaced double multiplication with division &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        val t4 = h11(t) * (xk1 - xk) * m2</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_18'/>
+18
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_18'>1</a>
+<span>
+1. interpolate : Replaced double addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return t1 +</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_19'/>
+19
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_19'>1</a>
+<span>
+1. interpolate : Replaced double addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                t2 +</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_20'/>
+20
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_20'>2</a>
+<span>
+1. interpolate : Replaced double addition with subtraction &rarr; KILLED<br/>
+2. interpolate : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::interpolate &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                t3 +</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                t4</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_24'/>
+24
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_24'>5</a>
+<span>
+1. h00 : Replaced double multiplication with division &rarr; KILLED<br/>
+2. h00 : Replaced double multiplication with division &rarr; KILLED<br/>
+3. h00 : Replaced double subtraction with addition &rarr; KILLED<br/>
+4. h00 : Replaced double addition with subtraction &rarr; KILLED<br/>
+5. h00 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::h00 &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    private fun h00(t: Double) = 2.0 * (t pow 3) - 3.0 * (t pow 2) + 1.0</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_25'/>
+25
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_25'>4</a>
+<span>
+1. h10 : Replaced double multiplication with division &rarr; KILLED<br/>
+2. h10 : Replaced double subtraction with addition &rarr; KILLED<br/>
+3. h10 : Replaced double addition with subtraction &rarr; KILLED<br/>
+4. h10 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::h10 &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    private fun h10(t: Double) = (t pow 3) - 2.0 * (t pow 2) + t</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_26'/>
+26
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_26'>4</a>
+<span>
+1. h01 : Replaced double multiplication with division &rarr; KILLED<br/>
+2. h01 : Replaced double multiplication with division &rarr; KILLED<br/>
+3. h01 : Replaced double addition with subtraction &rarr; KILLED<br/>
+4. h01 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::h01 &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    private fun h01(t: Double) = -2.0 * (t pow 3) + 3.0 * (t pow 2)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_27'/>
+27
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_27'>2</a>
+<span>
+1. h11 : Replaced double subtraction with addition &rarr; KILLED<br/>
+2. h11 : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::h11 &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    private fun h11(t: Double) = (t pow 3) - (t pow 2)</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_29'/>
+29
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_29'>1</a>
+<span>
+1. pow : replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::pow &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    infix private fun Double.pow(d: Int) = Math.pow(this, d.toDouble())</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@5305c37d_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_6'>6</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_6'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getM1<br/><b>Killed by : </b>none</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getM1 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getM2<br/><b>Killed by : </b>none</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getM2 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>getX1<br/><b>Killed by : </b>none</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getX1 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>getX2<br/><b>Killed by : </b>none</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getX2 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>getY1<br/><b>Killed by : </b>none</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getY1 &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>6.<span><b>6</b><br/><b>Location : </b>getY2<br/><b>Killed by : </b>none</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::getY2 &rarr; SURVIVED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_9'>9</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_9'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double division with multiplication &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_14'>14</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_14'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_15'>15</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_15'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_16'>16</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_16'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_17'>17</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_17'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_18'>18</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_18'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_19'>19</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_19'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_20'>20</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_20'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>interpolate<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::interpolate &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_24'>24</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_24'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>h00<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>h00<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>h00<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>h00<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>5.<span><b>5</b><br/><b>Location : </b>h00<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::h00 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_25'>25</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_25'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>h10<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>h10<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>h10<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>h10<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::h10 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_26'>26</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_26'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>h01<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>h01<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double multiplication with division &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>h01<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double addition with subtraction &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>h01<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::h01 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_27'>27</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_27'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>h11<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> Replaced double subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>h11<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::h11 &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@5305c37d_29'>29</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@5305c37d_29'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>pow<br/><b>Killed by : </b>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec</span></span> replaced return of double value with -(x + 1) for com/github/sanity/pav/spline/CubicHermiteSpline::pow &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+<li class='mutator'>MATH_MUTATOR</li>
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>com.github.sanity.pav.CubicHermiteSplineSpec.com.github.sanity.pav.CubicHermiteSplineSpec (14 ms)</li><li>com.github.sanity.pav.MonotoneSplineSpec.com.github.sanity.pav.MonotoneSplineSpec (8 ms)</li><li>com.github.sanity.pav.PairAdjacentViolatorsSpec.com.github.sanity.pav.PairAdjacentViolatorsSpec (21 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.1.10
+
+</body>
+</html>
