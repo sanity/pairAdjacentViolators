@@ -13,24 +13,24 @@ import java.util.*
  * Moreover, assuming the control points are monotonic (Y is non-decreasing or
  * non-increasing) then the interpolated values will also be monotonic.
 
- * @param xPoints The X component of the control points, strictly increasing.
- * *
- * @param yPoints The Y component of the control points, monotonic.
- * *
- * @return
- * *
- * *
- * @throws IllegalArgumentException if the X or Y arrays are null, have
- * * different lengths or have fewer than 2 values.
+ * @param inputPoints The control points through which the spline must pass
+ *
+ * @param tangentStrategy The strategy used to determine the tangents at each control point
  * *
  * @throws IllegalArgumentException if the control points are not monotonic.
 */
 
-class MonotoneSpline(inputPoints: List<Point>, tangentStrategy: TangentStrategy = FritschCarlsonTangentStrategy()) {
+class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangentStrategy: TangentStrategy = FritschCarlsonTangentStrategy()) {
 
     private val points: ArrayList<PointWithTangents>
 
     init {
+        var lastY : Double? = null
+        for (point in inputPoints) {
+            if (lastY != null && lastY > point.y) throw IllegalArgumentException("inputPoints are not monotonic")
+            lastY = point.y
+        }
+
         val pointsWithSecants = SecantsCalculator.calculate(inputPoints)
         points = tangentStrategy.compute(pointsWithSecants)
     }
