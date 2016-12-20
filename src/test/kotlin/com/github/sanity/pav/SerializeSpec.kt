@@ -18,46 +18,35 @@ class SerializeSpec : FreeSpec() {
                 Point(point.y, point.x))
         )
 
-        "serializable Point" - {
+        "Point should be serializable and deserizable" {
             val savedPoint = save(point, "point")
-            val loadedPoint = open("point") as Point
+            val loadedPoint: Point = open("point")
 
             savedPoint.x shouldBe exactly(loadedPoint.x)
             savedPoint.y shouldBe exactly(loadedPoint.y)
             savedPoint.weight shouldBe exactly(loadedPoint.weight)
         }
 
-        "serializable PairAdjacentViolators" - {
+        "PairAdjacentViolators should be serializable and deserizable" {
             val savedPav = save(pav, "pav")
-            val loadedPav = open("pav") as PairAdjacentViolators
+            val loadedPav: PairAdjacentViolators = open("pav")
 
             savedPav.isotonicPoints shouldEqual loadedPav.isotonicPoints
         }
     }
 }
 
-fun open(path: String) : Any // todo: object type from context
-{
-    print("opening \"$path\" : ")
-
+inline fun <T> open(path: String): T {
     val fin = FileInputStream(path)
     val obj = ObjectInputStream(fin).readObject()
     fin.close()
 
-    println("complete")
-
-    return obj
+    return obj as T
 }
 
-fun <T> save(obj: T, path: String) : T
-{
-    print("saving \"$path\" : ")
-
+fun <T> save(obj: T, path: String) : T {
     val fout = FileOutputStream(path)
     ObjectOutputStream(fout).writeObject(obj)
     fout.close()
-
-    println("complete")
-
     return obj
 }

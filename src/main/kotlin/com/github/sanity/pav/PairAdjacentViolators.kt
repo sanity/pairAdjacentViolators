@@ -12,6 +12,10 @@ import java.util.*
 
 class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) : Serializable {
 
+    companion object {
+        private const val serialVersionUID: Long = -5624398625406
+    }
+
     /**
      * The points after the regression, should either be increasing or decreasing depending
      * on how the PairAdjacentViolators object is configured.
