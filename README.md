@@ -8,7 +8,9 @@ Note this algorithm is also known as "Pool Adjacent Violators".
 
 ### What is "Isotonic Regression"?
 
-Imagine you have two variables, _x_ and _y_, and you don't know the relationship between them, but you know that if _x_ increases then _y_ will increase, and if _x_ decreases then _y_ will decrease.  Examples of this include:
+Imagine you have two variables, _x_ and _y_, and you don't know the relationship between them, but you know that if _x_ increases then _y_ will increase, and if _x_ decreases then _y_ will decrease.  Alternatively it may be the opposite, if _x_ increases then _y_ decreases, and if _x_ decreases then _y_ increases.
+
+Examples of such isotonic or monotonic relationships include:
 
  * _x_ is the pressure applied to the accelerator in a car, _y_ is the acceleration of the car (acceleration increases as more pressure is applied)
  * _x_ is the rate at which a web server is receiving HTTP requests, _y_ is the CPU usage of the web server (server CPU usage will increase as the request rate increases)
