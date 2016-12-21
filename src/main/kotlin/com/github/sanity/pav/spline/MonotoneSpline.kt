@@ -25,9 +25,17 @@ class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangent
     private val points: ArrayList<PointWithTangents>
 
     init {
+        var direction : Int = 0
         var lastY : Double? = null
         for (point in inputPoints) {
-            if (lastY != null && lastY > point.y) throw IllegalArgumentException("inputPoints are not monotonic")
+            if (lastY != null) {
+                val cd = point.y.compareTo(lastY)
+                if (direction == 0) {
+                    direction = cd
+                } else if ((cd != 0) && cd != direction) {
+                    throw IllegalArgumentException("Input is not monotonic")
+                }
+            }
             lastY = point.y
         }
 

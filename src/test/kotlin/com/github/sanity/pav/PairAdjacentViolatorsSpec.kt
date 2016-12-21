@@ -81,30 +81,48 @@ class PairAdjacentViolatorsSpec : FreeSpec() {
             }
 
             "PAV interpolation" - {
-                "should interpolate as expected" {
-                    val increasingPoints = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
-                    val pav = PairAdjacentViolators(increasingPoints)
-                    pav.isotonicPoints shouldEqual increasingPoints
-                    val splineInterpolator = pav.interpolator(PairAdjacentViolators.InterpolationStrategy.SPLINE)
-                    var lastPointVar: Point? = null
-                    for (point in increasingPoints) {
-                        splineInterpolator(point.x) shouldEqual point.y
-                        val lastPoint = lastPointVar
-                        if (lastPoint != null) {
-                            val midPointValue = splineInterpolator((point.x + lastPoint.x) / 2.0)
-                            midPointValue should { it >= lastPoint.y && it <= point.y }
+                "should interpolate as expected" - {
+                    "for increasing points" {
+                        val increasingPoints = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
+                        val pav = PairAdjacentViolators(increasingPoints)
+                        pav.isotonicPoints shouldEqual increasingPoints
+                        val splineInterpolator = pav.interpolator(PairAdjacentViolators.InterpolationStrategy.SPLINE)
+                        var lastPointVar: Point? = null
+                        for (point in increasingPoints) {
+                            splineInterpolator(point.x) shouldEqual point.y
+                            val lastPoint = lastPointVar
+                            if (lastPoint != null) {
+                                val midPointValue = splineInterpolator((point.x + lastPoint.x) / 2.0)
+                                midPointValue should { it >= lastPoint.y && it <= point.y }
+                            }
+                            lastPointVar = point
                         }
-                        lastPointVar = point
+                    }
+                    "for decreasing points" {
+                        val decreasingPoints = listOf(Point(3.0, 4.0), Point(4.0, 3.0), Point(5.0, 2.0), Point(8.0, 1.0))
+                        val pav = PairAdjacentViolators(decreasingPoints, DECREASING)
+                        pav.isotonicPoints shouldEqual decreasingPoints
+                        val splineInterpolator = pav.interpolator(PairAdjacentViolators.InterpolationStrategy.SPLINE)
+                        var lastPointVar: Point? = null
+                        for (point in decreasingPoints) {
+                            splineInterpolator(point.x) shouldEqual point.y
+                            val lastPoint = lastPointVar
+                            if (lastPoint != null) {
+                                val midPointValue = splineInterpolator((point.x + lastPoint.x) / 2.0)
+                                midPointValue should { it >= lastPoint.y && it <= point.y }
+                            }
+                            lastPointVar = point
+                        }
                     }
                 }
 
                 "should reverse-interpolate as expected" {
-                    val increasingPoints = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
-                    val pav = PairAdjacentViolators(increasingPoints)
-                    pav.isotonicPoints shouldEqual increasingPoints
+                    val points = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
+                    val pav = PairAdjacentViolators(points)
+                    pav.isotonicPoints shouldEqual points
                     val splineInterpolator = pav.inverseInterpolator(PairAdjacentViolators.InterpolationStrategy.SPLINE)
                     var lastPointVar: Point? = null
-                    for (point in increasingPoints) {
+                    for (point in points) {
                         splineInterpolator(point.y) shouldEqual point.x
                         val lastPoint = lastPointVar
                         if (lastPoint != null) {

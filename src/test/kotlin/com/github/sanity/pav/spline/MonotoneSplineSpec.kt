@@ -8,8 +8,8 @@ import io.kotlintest.specs.FreeSpec
  */
 class MonotoneSplineSpec : FreeSpec() {
     init {
-        val spline = MonotoneSpline(listOf(Point(0.0, 0.0), Point(1.0, 2.0), Point(2.0, 2.5)))
         "A simple increasing spline" - {
+            val spline = MonotoneSpline(listOf(Point(0.0, 0.0), Point(1.0, 2.0), Point(2.0, 2.5)))
             "should provide the first y value if x is less than the first point" {
                 spline.interpolate(-1.0) shouldBe exactly(0.0)
             }
@@ -30,6 +30,28 @@ class MonotoneSplineSpec : FreeSpec() {
                         val delta = y - prevY
                         (delta > 0.0) shouldBe true
                         (delta < 0.1) shouldBe true
+                    }
+                    prevY = y
+                    x += 0.01
+                }
+            }
+        }
+        "A simple decreasing spline" - {
+            val spline = MonotoneSpline(listOf(Point(0.0, 2.5), Point(1.0, 2.0), Point(2.0, 1.0)))
+            "should provide correct outputs for the actual points used as input" {
+                spline.interpolate(0.0) shouldBe exactly(2.5)
+                spline.interpolate(1.0) shouldBe exactly(2.0)
+                spline.interpolate(2.0) shouldBe exactly(1.0)
+            }
+            "should be continuous and decreasing" {
+                var x = 0.0
+                var prevY : Double? = null
+                while (x < 2.0) {
+                    val y = spline.interpolate(x)
+                    if (prevY != null) {
+                        val delta = y - prevY!!
+                        (delta < 0.0) shouldBe true
+                        (delta > -0.1) shouldBe true
                     }
                     prevY = y
                     x += 0.01
