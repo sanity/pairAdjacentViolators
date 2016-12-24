@@ -24,9 +24,21 @@ What we'd really like to be able to do is estimate, for any given _x_, what _y_ 
 
 But of course in reality real-world data is noisy, and is unlikely to be strictly isotonic, so we want something that allows us to feed in this raw noisy data, figure out the actual relationship between _x_ and _y_, and then use this to allow us to predict _y_ given _x_, or to predict what value of _x_ will give us a particular value of _y_.  This is the purpose of the pair-adjacent-violators algorithm.
 
+#### ...and why should I care?
+
+Using the examples I provide above:
+
+* A self-driving car could use it to decide how much pressure to apply to the accelerator to give a desired amount of acceleration
+* You could use it to help predict how many web servers you need to handle a given amount of web traffic
+* You could use it to choose a price for an item that maximizes your profit
+
+#### Isotonic regression in online advertising
+
 If you have an hour to spare, and are interested in learning more about how online advertising works - you should check out [this lecture](https://vimeo.com/137999578) that I gave in 2015 where I explain how we were able to use pair adjacent violators to solve some fun problems.
 
-A picture is worth a thousand words, so here is the relationship that PAV extracts from some very noisy input data where there is an increasing relationship between _x_ and _y_:
+#### A picture is worth a thousand words
+
+Here is the relationship that PAV extracts from some very noisy input data where there is an increasing relationship between _x_ and _y_:
 
 ![PAV in action](https://sanity.github.io/pairAdjacentViolators/pav-example.png)
 
