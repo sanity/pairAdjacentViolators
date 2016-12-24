@@ -22,7 +22,7 @@ So we know the relationship between _x_ and is isotonic, and let's also say that
 
 What we'd really like to be able to do is estimate, for any given _x_, what _y_ will be, or alternatively for any given _y_, what _x_ would be required.
 
-But of course in reality real-world data is noisy, and is unlikely to be strictly isotonic, so we want something that allows us to feed in this raw noisy data, figure out the actual relationship between _x_ and _y_, and then use this to allow us to predict _y_ given _x_, or to predict what value of _x_ will give us a particular value of _y_.  This is the purpose of the pair-adjacent-violators algorithm.
+But of course real-world data is noisy, and is unlikely to be strictly isotonic, so we want something that allows us to feed in this raw noisy data, figure out the actual relationship between _x_ and _y_, and then use this to allow us to predict _y_ given _x_, or to predict what value of _x_ will give us a particular value of _y_.  This is the purpose of the pair-adjacent-violators algorithm.
 
 #### ...and why should I care?
 
