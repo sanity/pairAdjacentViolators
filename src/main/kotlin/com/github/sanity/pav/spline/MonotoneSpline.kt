@@ -3,6 +3,7 @@ package com.github.sanity.pav.spline
 import com.github.sanity.pav.BinarySearchResult
 import com.github.sanity.pav.Point
 import com.github.sanity.pav.betterBinarySearch
+import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.*
 import java.util.*
 
 /**
@@ -51,11 +52,23 @@ class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangent
      * *
      * @return The interpolated Y = f(X) value.
      */
-    fun interpolate(x: Double): Double {
+    @JvmOverloads fun interpolate(x: Double, extrapolationStrategy: ExtrapolationStrategy = FLAT): Double {
         val firstPoint = points.first()
-        if (x < firstPoint.x) return firstPoint.y
         val lastPoint = points.last()
-        if (x > lastPoint.x) return lastPoint.y
+        if ((x < firstPoint.x) || (x > lastPoint.x)) {
+            return when (extrapolationStrategy) {
+                FLAT -> {
+                    if (x < firstPoint.x) firstPoint.y else lastPoint.y
+                }
+                TANGENT -> {
+                    if (x < firstPoint.x) {
+
+                    } else {
+
+                    }
+                }
+            }
+        }
         val binarySearchResult = points.map { it.x }.toDoubleArray().betterBinarySearch(x)
         return when (binarySearchResult) {
             is BinarySearchResult.Exact -> points[binarySearchResult.index].y
@@ -71,6 +84,10 @@ class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangent
             }
             else -> TODO("Remove this, shouldn't be necessary")
         }
+    }
+
+    enum class ExtrapolationStrategy {
+        FLAT, TANGENT
     }
 }
 
