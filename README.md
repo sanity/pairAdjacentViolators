@@ -6,7 +6,7 @@ An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/jan
 
 Note this algorithm is also known as "Pool Adjacent Violators".
 
-### What is "Isotonic Regression"?
+### What is "Isotonic Regression" and why should I care?
 
 Imagine you have two variables, _x_ and _y_, and you don't know the relationship between them, but you know that if _x_ increases then _y_ will increase, and if _x_ decreases then _y_ will decrease.  Alternatively it may be the opposite, if _x_ increases then _y_ decreases, and if _x_ decreases then _y_ increases.
 
