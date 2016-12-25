@@ -3,7 +3,8 @@ package com.github.sanity.pav.spline
 import com.github.sanity.pav.BinarySearchResult
 import com.github.sanity.pav.Point
 import com.github.sanity.pav.betterBinarySearch
-import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.*
+import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.FLAT
+import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.TANGENT
 import java.util.*
 
 /**
@@ -48,11 +49,11 @@ class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangent
      * Interpolates the value of Y = f(X) for given X.
      * Clamps X to the domain of the spline.
 
-     * @param x The X value.
-     * *
-     * @return The interpolated Y = f(X) value.
+     * @param x The X value
+     * @param extrapolationStrategy How will x values be handled that are outside the x range of the control points
+     * @return The interpolated Y = f(X) value
      */
-    @JvmOverloads fun interpolate(x: Double, extrapolationStrategy: ExtrapolationStrategy = FLAT): Double {
+    @JvmOverloads fun interpolate(x: Double, extrapolationStrategy: ExtrapolationStrategy = TANGENT): Double {
         val firstPoint = points.first()
         val lastPoint = points.last()
         if ((x < firstPoint.x) || (x > lastPoint.x)) {
@@ -62,9 +63,13 @@ class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangent
                 }
                 TANGENT -> {
                     if (x < firstPoint.x) {
-
+                        val xDelta = firstPoint.x - x
+                        val yDelta = firstPoint.tangent * xDelta
+                        firstPoint.y - yDelta
                     } else {
-
+                        val xDelta = x - lastPoint.x
+                        val yDelta = lastPoint.tangent * xDelta
+                        lastPoint.y + yDelta
                     }
                 }
             }
@@ -86,8 +91,20 @@ class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangent
         }
     }
 
+    /**
+     * Determines how the spline will handle points that are outside of the x range of its
+     * control points.
+     */
     enum class ExtrapolationStrategy {
-        FLAT, TANGENT
+        /**
+         * Will return the y value of the closest point, resulting in a flat line
+         * before and after the spline
+         */
+        FLAT,
+        /**
+         * Will extrapolate using the computed tangents of the first and last points
+         */
+        TANGENT
     }
 }
 
