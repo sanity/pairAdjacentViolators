@@ -51,6 +51,7 @@ approx [75% mutation test coverage](https://sanity.github.io/pairAdjacentViolato
 * Fairly efficient implementation without compromizing code readability
 * While implemented in Kotlin, works nicely from Java and other JVM languages
 * Supports reverse-interpolation
+* Will intelligently extrapolate to compute _y_ for values of _x_ greater or less than those used to build the PAV model
 
 ## Usage
 
