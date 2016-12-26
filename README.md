@@ -18,7 +18,7 @@ Examples of such isotonic or monotonic relationships include:
 
 These are all examples of an isotonic relationship between two variables.  
 
-So we know the relationship between _x_ and is isotonic, and let's also say that we've been able to collect data about actual _x_ and _y_ values that occur in practice.
+So we know the relationship between _x_ and _y_ is isotonic, and let's also say that we've been able to collect data about actual _x_ and _y_ values that occur in practice.
 
 What we'd really like to be able to do is estimate, for any given _x_, what _y_ will be, or alternatively for any given _y_, what _x_ would be required.
 
