@@ -22,6 +22,12 @@ fun main(args: Array<String>) {
     for (p in points) {
         println("${p.x}\t${p.y}\t${interpolator(p.x)}")
     }
+    for (x in -30 .. -1) {
+        println("$x\t\t${interpolator(x.toDouble())}")
+    }
+    for (x in 101 .. 130) {
+        println("$x\t\t${interpolator(x.toDouble())}")
+    }
 }
 
 fun funX(x: Double): Double = x + 0.1 * x * x
