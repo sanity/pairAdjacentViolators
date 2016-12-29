@@ -28,9 +28,9 @@ But of course real-world data is noisy, and is unlikely to be strictly isotonic,
 
 Using the examples I provide above:
 
-* A self-driving car could use it to decide how much pressure to apply to the accelerator to give a desired amount of acceleration
+* A self-driving car could use it to learn how much pressure to apply to the accelerator to give a desired amount of acceleration
 * An autoscaling system could use it to help predict how many web servers they need to handle a given amount of web traffic
-* A retailer could use it to choose a price for an item that maximizes their profit
+* A retailer could use it to choose a price for an item that maximizes their profit (aka "yield optimization")
 
 #### Isotonic regression in online advertising
 
