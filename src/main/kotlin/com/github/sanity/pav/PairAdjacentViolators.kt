@@ -2,6 +2,8 @@ package com.github.sanity.pav
 
 import com.github.sanity.pav.PairAdjacentViolators.InterpolationStrategy.SPLINE
 import com.github.sanity.pav.spline.MonotoneSpline
+import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy
+import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.TANGENT
 import java.io.Serializable
 import java.util.*
 
@@ -47,19 +49,19 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
         isotonicPoints = points.toArrayList()
     }
 
-    @JvmOverloads fun interpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
+    @JvmOverloads fun interpolator(strategy: InterpolationStrategy = SPLINE, extrapolation: ExtrapolationStrategy = TANGENT): (Double) -> Double {
         when (strategy) {
             SPLINE -> return {
-                MonotoneSpline(isotonicPoints).interpolate(it)
+                MonotoneSpline(isotonicPoints).interpolate(it, extrapolation)
             }
         }
     }
 
-    @JvmOverloads fun inverseInterpolator(strategy: InterpolationStrategy = SPLINE): (Double) -> Double {
+    @JvmOverloads fun inverseInterpolator(strategy: InterpolationStrategy = SPLINE, extrapolation: ExtrapolationStrategy = TANGENT): (Double) -> Double {
         when (strategy) {
             SPLINE -> return {
                 val spline = MonotoneSpline(isotonicPoints.map {Point(it.y, it.x)})
-                spline.interpolate(it)
+                spline.interpolate(it, extrapolation)
             }
         }
     }

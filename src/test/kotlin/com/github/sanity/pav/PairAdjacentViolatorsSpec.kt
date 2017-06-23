@@ -86,7 +86,7 @@ class PairAdjacentViolatorsSpec : FreeSpec() {
                         val increasingPoints = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0), Point(8.0, 4.0))
                         val pav = PairAdjacentViolators(increasingPoints)
                         pav.isotonicPoints shouldEqual increasingPoints
-                        val splineInterpolator = pav.interpolator(PairAdjacentViolators.InterpolationStrategy.SPLINE)
+                        val splineInterpolator = pav.interpolator(PairAdjacentViolators.InterpolationStrategy.SPLINE, MonotoneSpline.ExtrapolationStrategy.TANGENT)
                         var lastPointVar: Point? = null
                         for (point in increasingPoints) {
                             splineInterpolator(point.x) shouldEqual point.y
@@ -102,7 +102,7 @@ class PairAdjacentViolatorsSpec : FreeSpec() {
                         val decreasingPoints = listOf(Point(3.0, 4.0), Point(4.0, 3.0), Point(5.0, 2.0), Point(8.0, 1.0))
                         val pav = PairAdjacentViolators(decreasingPoints, DECREASING)
                         pav.isotonicPoints shouldEqual decreasingPoints
-                        val splineInterpolator = pav.interpolator(PairAdjacentViolators.InterpolationStrategy.SPLINE)
+                        val splineInterpolator = pav.interpolator(PairAdjacentViolators.InterpolationStrategy.SPLINE, MonotoneSpline.ExtrapolationStrategy.TANGENT)
                         var lastPointVar: Point? = null
                         for (point in decreasingPoints) {
                             splineInterpolator(point.x) shouldEqual point.y

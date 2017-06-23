@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
     }
     val startTime = System.nanoTime()
     val pav = PairAdjacentViolators(points)
-    val interpolator = pav.interpolator()
+    val interpolator = pav.interpolator(extrapolation = MonotoneSpline.ExtrapolationStrategy.TANGENT)
     val mergedPoints = pav.isotonicPoints
     println("Took ${System.nanoTime()-startTime}ns to build PAV for ${points.size} input points resulting in ${mergedPoints.size} merged points")
     for (p in points) {
