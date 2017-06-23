@@ -18,7 +18,7 @@ Examples of such isotonic or monotonic relationships include:
 
 These are all examples of an isotonic relationship between two variables.  
 
-So we know the relationship between _x_ and is isotonic, and let's also say that we've been able to collect data about actual _x_ and _y_ values that occur in practice.
+So we know the relationship between _x_ and _y_ is isotonic, and let's also say that we've been able to collect data about actual _x_ and _y_ values that occur in practice.
 
 What we'd really like to be able to do is estimate, for any given _x_, what _y_ will be, or alternatively for any given _y_, what _x_ would be required.
 
@@ -28,9 +28,9 @@ But of course real-world data is noisy, and is unlikely to be strictly isotonic,
 
 Using the examples I provide above:
 
-* A self-driving car could use it to decide how much pressure to apply to the accelerator to give a desired amount of acceleration
+* A self-driving car could use it to learn how much pressure to apply to the accelerator to give a desired amount of acceleration
 * An autoscaling system could use it to help predict how many web servers they need to handle a given amount of web traffic
-* A retailer could use it to choose a price for an item that maximizes their profit
+* A retailer could use it to choose a price for an item that maximizes their profit (aka "yield optimization")
 
 #### Isotonic regression in online advertising
 
@@ -51,6 +51,7 @@ approx [75% mutation test coverage](https://sanity.github.io/pairAdjacentViolato
 * Fairly efficient implementation without compromizing code readability
 * While implemented in Kotlin, works nicely from Java and other JVM languages
 * Supports reverse-interpolation
+* Will intelligently extrapolate to compute _y_ for values of _x_ greater or less than those used to build the PAV model
 
 ## Usage
 
@@ -96,7 +97,7 @@ public class PAVTest {
 ```
 
 ### Full API documentation
-* [1.3.0](https://jitpack.io/com/github/sanity/pairAdjacentViolators/1.3.0/javadoc/com.github.sanity.pav/index.html)
+* [1.4.0](https://jitpack.io/com/github/sanity/pairAdjacentViolators/1.4.0/javadoc/com.github.sanity.pav/index.html)
 * [SNAPSHOT](https://jitpack.io/com/github/sanity/pairAdjacentViolators/-SNAPSHOT/javadoc/com.github.sanity.pav/index.html) (warning: This may take a while to load as it is rebuilt on-demand)
 
 ### License
