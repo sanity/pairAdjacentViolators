@@ -87,7 +87,6 @@ class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangent
                 val chs = CubicHermiteSpline(x1 = x1, y1 = y1, m1 = m1, x2 = x2, y2 = y2, m2 = m2)
                 return chs.interpolate(x)
             }
-            else -> TODO("Remove this, shouldn't be necessary")
         }
     }
 
