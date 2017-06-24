@@ -35,9 +35,11 @@ class FritschCarlsonTangentStrategy : TangentStrategy {
              */
             val tangent: Double =
                     when {
-                it.secantBefore != null && it.secantAfter != null -> (it.secantBefore.slope + it.secantAfter.slope) / 2.0
-                it.secantBefore != null -> it.secantBefore.slope
-                else -> it.secantAfter!!.slope // !! shouldn't be necessary, but smartcasting not smart enough yet
+                        it.secantBefore != null && it.secantAfter != null ->
+                            (it.secantBefore.slope + it.secantAfter.slope) / 2.0
+                        it.secantBefore != null -> it.secantBefore.slope
+                        it.secantAfter != null -> it.secantAfter.slope
+                        else -> throw RuntimeException("secantBefore and secantAfter shouldn't both be null")
             }
             PointWithTangents(it, tangent)
         }.toArrayList()

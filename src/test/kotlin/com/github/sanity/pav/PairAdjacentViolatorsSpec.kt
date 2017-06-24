@@ -1,6 +1,7 @@
 package com.github.sanity.pav
 
 import com.github.sanity.pav.PairAdjacentViolators.PAVMode.DECREASING
+import com.github.sanity.pav.spline.MonotoneSpline
 import io.kotlintest.specs.FreeSpec
 
 /**
@@ -29,6 +30,16 @@ class PairAdjacentViolatorsSpec : FreeSpec() {
         }
 
         "PairAdjacentViolators" - {
+            "a PAV given a single point" - {
+                val point = listOf(Point(2.3, 4.2))
+                val pav = PairAdjacentViolators(point)
+                "should provide an interpolator that returns the y value for any x" {
+                    pav.interpolator().invoke(7623.2) shouldBe (4.2 plusOrMinus 0.0000001)
+                }
+                "should provide an inverse-interpolator that returns the x value for any y" {
+                    pav.inverseInterpolator().invoke(361.2) shouldBe (2.3 plusOrMinus 0.0000001)
+                }
+            }
             "should sort points by x value" {
                 val increasingPointsSorted = listOf(Point(3.0, 1.0), Point(4.0, 2.0), Point(5.0, 3.0))
                 val increasingPointsUnSorted = listOf(Point(5.0, 3.0), Point(3.0, 1.0), Point(4.0, 2.0))
