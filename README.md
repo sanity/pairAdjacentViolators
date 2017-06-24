@@ -97,7 +97,7 @@ public class PAVTest {
 ```
 
 ### Full API documentation
-* [1.4.1](https://jitpack.io/com/github/sanity/pairAdjacentViolators/1.4.0/javadoc/com.github.sanity.pav/index.html)
+* [1.4.2](https://jitpack.io/com/github/sanity/pairAdjacentViolators/1.4.0/javadoc/com.github.sanity.pav/index.html)
 * [SNAPSHOT](https://jitpack.io/com/github/sanity/pairAdjacentViolators/-SNAPSHOT/javadoc/com.github.sanity.pav/index.html) (warning: This may take a while to load as it is rebuilt on-demand)
 
 ### License
