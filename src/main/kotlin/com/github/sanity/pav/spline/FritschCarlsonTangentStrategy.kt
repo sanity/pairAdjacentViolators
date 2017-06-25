@@ -91,7 +91,7 @@ class FritschCarlsonTangentStrategy : TangentStrategy {
 
     internal fun ensureInputDataPointsAreStrictlyMonotone(k: Int, α: ArrayList<Double>, β: ArrayList<Double>) {
         if ((α[k] < 0.0) || β[k] < 0.0) {
-            throw IllegalArgumentException("Input datapoints are not strictly monotone")
+            throw IllegalArgumentException("Input datapoints are not strictly monotone (k = $k, α[k] = ${α[k]}, β[k] = ${β[k]})")
         }
     }
 }

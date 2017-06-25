@@ -24,21 +24,26 @@ import java.util.*
 
 class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangentStrategy: TangentStrategy = FritschCarlsonTangentStrategy()) {
 
+    private val minimumXDistance = 0.000001
+
     private val points: ArrayList<PointWithTangents>
 
     init {
         var direction : Int = 0
-        var lastY : Double? = null
+        var lastPoint : Point? = null
         for (point in inputPoints) {
-            if (lastY != null) {
-                val cd = point.y.compareTo(lastY)
+            if (lastPoint != null) {
+                if (point.x - lastPoint.x < minimumXDistance) {
+                    throw IllegalArgumentException("x position of $point and $lastPoint are below minimum threshold of $minimumXDistance")
+                }
+                val cd = point.y.compareTo(lastPoint.y)
                 if (direction == 0) {
                     direction = cd
                 } else if ((cd != 0) && cd != direction) {
                     throw IllegalArgumentException("Input is not monotonic")
                 }
             }
-            lastY = point.y
+            lastPoint = point
         }
 
         val pointsWithSecants = SecantsCalculator.calculate(inputPoints)

@@ -11,8 +11,15 @@ import java.util.*
  * Implements the "pair adjacent violators" algorithm, also known as "pool adjacent violators", for isotonic regression.
  */
 
+ /*
+  * NOTE:
+  *
+  * By default we specify a minimum x distance between points and merge them if they are too close because this can
+  * cause various headaches, particularly with spline interpolation as it leads to extremely high secant slopes
+  * leading to calculation problems.
+*/
 
-class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING) : Serializable {
+class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<Point>, mode: PAVMode = PAVMode.INCREASING, minimumXdistance: Double? = 0.000001) : Serializable {
 
     companion object {
         private const val serialVersionUID: Long = -5624398625406
@@ -31,7 +38,9 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
             val next = cursor.nextValue
             if (previous != null) {
                 val shouldMerge =
-                        previous.x == next.x || (
+                        previous.x == next.x
+                                || (minimumXdistance != null && (next.x - previous.x < minimumXdistance))
+                                || (
                                 when (mode) {
                     PAVMode.INCREASING -> previous.y >= next.y
                     PAVMode.DECREASING -> previous.y <= next.y

@@ -75,11 +75,14 @@ class MonotoneSplineSpec : FreeSpec() {
                     x += 0.01
                 }
             }
-        }
-
-        "should not accept non-monotonic input points" {
-            shouldThrow<IllegalArgumentException> {
-                MonotoneSpline(listOf(Point(0.0, 2.0), Point(1.0, 1.0), Point(2.0, 2.5)))
+            "An exception should be thrown if point x values are too close together" {
+                val points = listOf(
+                        Point(0.028032004027919038, 0.005076606954404119, 2727.83),
+                        Point(0.028032004027919034, 0.005040116616898155, 5448.952266030001),
+                        Point(0.02803200402791904, 0.004689930579740429, 6180.217733970002))
+                shouldThrow<IllegalArgumentException> {
+                    MonotoneSpline(points)
+                }
             }
         }
     }
