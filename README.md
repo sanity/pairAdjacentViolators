@@ -1,6 +1,6 @@
 # Pair Adjacent Violators
 
-![status stable](https://img.shields.io/badge/status-stable-brightgreen.svg) [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://kotlin.link/) [![](https://jitpack.io/v/sanity/pairAdjacentViolators.svg)](https://jitpack.io/#sanity/pairAdjacentViolators) [![Build Status](https://travis-ci.org/sanity/pairAdjacentViolators.svg?branch=master)](https://travis-ci.org/sanity/pairAdjacentViolators) ![coverage 89%](https://img.shields.io/badge/coverage-89%25-brightgreen.svg)
+![status stable](https://img.shields.io/badge/status-stable-brightgreen.svg) [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://kotlin.link/) [![](https://jitpack.io/v/sanity/pairAdjacentViolators.svg)](https://jitpack.io/#sanity/pairAdjacentViolators) [![Build Status](https://travis-ci.org/sanity/pairAdjacentViolators.svg?branch=master)](https://img.shields.io/travis/sanity/pairAdjacentViolators) ![coverage 89%](https://img.shields.io/badge/coverage-89%25-brightgreen.svg)
 
 ## Overview
 
