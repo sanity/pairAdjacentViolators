@@ -1,5 +1,7 @@
 # Pair Adjacent Violators
 
+[![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
+
 ## Overview
 
 An implementation of the [Pair Adjacent Violators](http://gifi.stat.ucla.edu/janspubs/2009/reports/deleeuw_hornik_mair_R_09.pdf) algorithm for [isotonic regression](https://en.wikipedia.org/wiki/Isotonic_regression).  Written in [Kotlin](http://kotlinlang.org/) but usable from Java or any [other JVM language](https://en.wikipedia.org/wiki/List_of_JVM_languages).  
