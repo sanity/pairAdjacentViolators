@@ -1,6 +1,6 @@
 # Pair Adjacent Violators
 
-![status stable](https://img.shields.io/badge/status-stable-brightgreen.svg) [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://kotlin.link/) [![](https://jitpack.io/v/sanity/pairAdjacentViolators.svg)](https://jitpack.io/#sanity/pairAdjacentViolators) [![Build Status](https://travis-ci.org/sanity/pairAdjacentViolators.svg?branch=master)](https://img.shields.io/travis/sanity/pairAdjacentViolators) ![coverage 89%](https://img.shields.io/badge/coverage-89%25-brightgreen.svg)
+![status stable](https://img.shields.io/badge/status-stable-brightgreen.svg) [![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://kotlin.link/) [![](https://jitpack.io/v/sanity/pairAdjacentViolators.svg)](https://jitpack.io/#sanity/pairAdjacentViolators) [![Travis](https://img.shields.io/travis/sanity/pairAdjacentViolators.svg)](https://travis-ci.org/sanity/pairAdjacentViolators) ![coverage 89%](https://img.shields.io/badge/coverage-89%25-brightgreen.svg)
 
 ## Overview
 
@@ -99,9 +99,9 @@ public class PAVTest {
 ```
 
 ### Full API documentation
-* [1.4.6](https://jitpack.io/com/github/sanity/pairAdjacentViolators/1.4.4/javadoc/com.github.sanity.pav/index.html)
+* [1.4.7](https://jitpack.io/com/github/sanity/pairAdjacentViolators/1.4.7/javadoc/com.github.sanity.pav/index.html)
 * [SNAPSHOT](https://jitpack.io/com/github/sanity/pairAdjacentViolators/-SNAPSHOT/javadoc/com.github.sanity.pav/index.html) (warning: This may take a while to load as it is rebuilt on-demand)
 
 ### License
-Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Ian Clarke](http://blog.locut.us/) of [Stacks](http://trystacks.com/).
+Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Ian Clarke](http://blog.locut.us/).
 

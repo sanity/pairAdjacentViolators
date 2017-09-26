@@ -2,6 +2,7 @@ package com.github.sanity.pav.spline
 
 import com.github.sanity.pav.Point
 import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.TANGENT
+import io.kotlintest.matchers.*
 import io.kotlintest.specs.FreeSpec
 
 /**

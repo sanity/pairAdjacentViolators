@@ -2,6 +2,7 @@ package com.github.sanity.pav
 
 import com.github.sanity.pav.PairAdjacentViolators.PAVMode.DECREASING
 import com.github.sanity.pav.spline.MonotoneSpline
+import io.kotlintest.matchers.*
 import io.kotlintest.specs.FreeSpec
 
 /**

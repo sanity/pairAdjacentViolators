@@ -1,10 +1,8 @@
 package com.github.sanity.pav
 
+import io.kotlintest.matchers.*
 import io.kotlintest.specs.FreeSpec
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-import java.io.ObjectInputStream
-import java.io.ObjectOutputStream
+import java.io.*
 
 /**
  * Created by musachev on 20.12.2016.

@@ -1,5 +1,6 @@
 package com.github.sanity.pav.spline
 
+import io.kotlintest.matchers.*
 import io.kotlintest.specs.FreeSpec
 
 /**

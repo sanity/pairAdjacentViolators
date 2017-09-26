@@ -1,7 +1,7 @@
 package com.github.sanity.pav
 
-import com.github.sanity.pav.BinarySearchResult.Between
-import com.github.sanity.pav.BinarySearchResult.Exact
+import com.github.sanity.pav.BinarySearchResult.*
+import io.kotlintest.matchers.*
 import io.kotlintest.specs.FreeSpec
 import java.util.*
 
