@@ -63,8 +63,11 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
             return { _ -> isotonicPoints.first().y }
         } else {
             when (strategy) {
-                SPLINE -> return {
-                    MonotoneSpline(isotonicPoints).interpolate(it, extrapolation)
+                SPLINE -> {
+                    val spline = MonotoneSpline(isotonicPoints)
+                    return {
+                        spline.interpolate(it, extrapolation)
+                    }
                 }
             }
         }
@@ -75,9 +78,11 @@ class PairAdjacentViolators @JvmOverloads constructor(originalPoints: Iterable<P
             return { _ -> isotonicPoints.first().x }
         } else {
             when (strategy) {
-                SPLINE -> return {
+                SPLINE -> {
                     val spline = MonotoneSpline(isotonicPoints.map { Point(it.y, it.x) })
-                    spline.interpolate(it, extrapolation)
+                    return {
+                        spline.interpolate(it, extrapolation)
+                    }
                 }
             }
         }
