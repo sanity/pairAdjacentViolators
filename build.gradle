@@ -1,5 +1,5 @@
 group 'com.github.sanity'
-version '1.4.8'
+version '1.4.9'
 
 buildscript {
     ext.kotlin_version = '1.1.60'
@@ -32,6 +32,8 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+   // compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: "$kotlin_version"
+
     // testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile 'io.kotlintest:kotlintest:2.0.5'
 }
@@ -55,5 +57,5 @@ pitest {
 }
 
 artifacts {
-    archives javadocJar
+    //archives javadocJar
 }
