@@ -1,10 +1,7 @@
 package com.github.sanity.pav.spline
 
-import com.github.sanity.pav.BinarySearchResult
-import com.github.sanity.pav.Point
-import com.github.sanity.pav.betterBinarySearch
-import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.FLAT
-import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.TANGENT
+import com.github.sanity.pav.*
+import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.*
 import java.util.*
 
 /**
@@ -40,7 +37,7 @@ class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangent
                 if (direction == 0) {
                     direction = cd
                 } else if ((cd != 0) && cd != direction) {
-                    throw IllegalArgumentException("Input is not monotonic")
+                    throw IllegalArgumentException("Input is not monotonic, cd: $cd, direction: $direction, point: $point, lastPoint: $lastPoint, inputPoints: $inputPoints")
                 }
             }
             lastPoint = point
