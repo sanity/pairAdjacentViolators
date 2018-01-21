@@ -1,8 +1,8 @@
 group 'com.github.sanity'
-version '1.4.10'
+version '1.4.11'
 
 buildscript {
-    ext.kotlin_version = '1.1.60'
+    ext.kotlin_version = '1.2.20'
     ext.dokka_version = '0.9.9'
 
     repositories {
