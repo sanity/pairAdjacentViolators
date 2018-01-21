@@ -1,9 +1,6 @@
-group 'com.github.sanity'
-version '1.4.11'
-
 buildscript {
     ext.kotlin_version = '1.2.20'
-    ext.dokka_version = '0.9.9'
+    ext.dokka_version = '0.9.15'
 
     repositories {
         mavenCentral()
@@ -14,9 +11,16 @@ buildscript {
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
-        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.1.10'
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.2.4'
     }
 }
+
+plugins {
+    id 'com.github.ben-manes.versions' version '0.17.0'
+}
+
+group 'com.github.sanity'
+version '1.4.11'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -35,7 +39,7 @@ dependencies {
    // compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version: "$kotlin_version"
 
     // testCompile group: 'junit', name: 'junit', version: '4.11'
-    testCompile 'io.kotlintest:kotlintest:2.0.5'
+    testCompile 'io.kotlintest:kotlintest:2.0.7'
 }
 
 task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
