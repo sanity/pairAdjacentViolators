@@ -1,12 +1,13 @@
 buildscript {
     ext.kotlin_version = '1.2.20'
-    ext.dokka_version = '0.9.15'
+    ext.dokka_version = '0.9.14'
 
     repositories {
         mavenCentral()
         maven {
             url "https://plugins.gradle.org/m2/"
         }
+        jcenter()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -20,7 +21,7 @@ plugins {
 }
 
 group 'com.github.sanity'
-version '1.4.11'
+version '1.4.12'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -32,6 +33,7 @@ sourceCompatibility = 1.6
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 dependencies {
