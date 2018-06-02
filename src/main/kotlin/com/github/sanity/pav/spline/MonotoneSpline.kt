@@ -2,6 +2,7 @@ package com.github.sanity.pav.spline
 
 import com.github.sanity.pav.*
 import com.github.sanity.pav.spline.MonotoneSpline.ExtrapolationStrategy.*
+import java.io.Serializable
 import java.util.*
 
 /**
@@ -19,7 +20,7 @@ import java.util.*
  * @throws IllegalArgumentException if the control points are not monotonic.
 */
 
-class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangentStrategy: TangentStrategy = FritschCarlsonTangentStrategy()) {
+class MonotoneSpline @JvmOverloads constructor(inputPoints: List<Point>, tangentStrategy: TangentStrategy = FritschCarlsonTangentStrategy()) : Serializable {
 
     private val minimumXDistance = 0.000001
 
