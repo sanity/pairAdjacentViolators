@@ -98,10 +98,6 @@ public class PAVTest {
 }
 ```
 
-### Full API documentation
-* [1.4.15](https://jitpack.io/com/github/sanity/pairAdjacentViolators/1.4.15/javadoc/com.github.sanity.pav/index.html)
-* [SNAPSHOT](https://jitpack.io/com/github/sanity/pairAdjacentViolators/-SNAPSHOT/javadoc/com.github.sanity.pav/index.html) (warning: This may take a while to load as it is rebuilt on-demand)
-
 ### License
 Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Ian Clarke](http://blog.locut.us/).
 
