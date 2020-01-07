@@ -98,6 +98,10 @@ public class PAVTest {
 }
 ```
 
+### Questions/Feedback
+
+Please ask questions, report bugs, request features etc via [Github Issues](https://github.com/sanity/pairAdjacentViolators/issues), you're also more than welcome to submit pull requests.
+
 ### License
 Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Ian Clarke](http://blog.locut.us/).
 
