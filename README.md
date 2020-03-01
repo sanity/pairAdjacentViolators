@@ -18,7 +18,7 @@ Examples of such isotonic or monotonic relationships include:
  * _x_ is the rate at which a web server is receiving HTTP requests, _y_ is the CPU usage of the web server (server CPU usage will increase as the request rate increases)
  * _x_ is the price of an item, and _y_ is the probability that someone will buy it (this would be a decreasing relationship, as _x_ increases _y_ decreases)
 
-These are all examples of an isotonic relationship between two variables, and in each of these cases it would be unwise to assume the relationship is linear.
+These are all examples of an isotonic relationship between two variables, where the relationship is likely to be more complex than linear.
 
 So we know the relationship between _x_ and _y_ is isotonic, and let's also say that we've been able to collect data about actual _x_ and _y_ values that occur in practice.
 
