@@ -105,3 +105,6 @@ Please ask questions, report bugs, request features etc via [Github Issues](http
 ### License
 Released under the [LGPL](https://en.wikipedia.org/wiki/GNU_Lesser_General_Public_License) version 3 by [Ian Clarke](http://blog.locut.us/).
 
+### See also
+
+* An implementation of PAV for the Rust programming language by the same author: https://github.com/sanity/pair_adjacent_violators
